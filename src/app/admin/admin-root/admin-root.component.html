@@ -79,35 +79,45 @@
               </a>
             </div>
           </li>
-          <!-- <li class="nav-item" *ngIf="isOwner() || isInventory()">
+          <li class="nav-item dropdown" *ngIf="isOwner()">
             <a
               class="nav-link"
-              [routerLink]="'/admin/brand'"
-              routerLinkActive="active"
+              href="#"
+              id="navbarDropdown"
+              role="button"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
             >
-              <i class="fa fa-bandcamp text-primary"></i>
-              <span class="nav-link-text">Brand</span>
+              <i class="fa fa-product-hunt fa-2x text-yellow"></i>
+              <span class="nav-link-text">Product</span>
             </a>
-          </li> -->
-          <li class="nav-item" *ngIf="isOwner() || isInventory()">
-            <a
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a
               class="nav-link"
               [routerLink]="'/admin/product'"
               routerLinkActive="active"
             >
               <i class="fa fa-product-hunt fa-2x text-yellow"></i>
-              <span class="nav-link-text">Product</span>
+              <span class="nav-link-text"> Add Product</span>
             </a>
-          </li>
-          <li class="nav-item" *ngIf="isOwner() || isInventory()">
             <a
-              class="nav-link"
-              [routerLink]="'/admin/suplier'"
-              routerLinkActive="active"
-            >
-              <i class="fa fa-users text-purple"></i>
-              <span class="nav-link-text">Suplier</span>
-            </a>
+            class="nav-link"
+            [routerLink]="'/admin/brand'"
+            routerLinkActive="active"
+          >
+            <i class="fa fa-bandcamp text-primary"></i>
+            <span class="nav-link-text">Brand</span>
+          </a>
+          <a
+          class="nav-link"
+          [routerLink]="'/admin/uom'"
+          routerLinkActive="active"
+        >
+          <i class="fa fa-square text-orange"></i>
+          <span class="nav-link-text">Unit Of Measure</span>
+        </a>
+            </div>
           </li>
           <li class="nav-item" *ngIf="isOwner() || isInventory()">
             <a
