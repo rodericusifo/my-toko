@@ -9,7 +9,6 @@ import { UserComponent } from './admin-root/user/user.component';
 import { BrandComponent } from './admin-root/brand/brand.component';
 import { ProductComponent } from './admin-root/product/product.component';
 import { ProfitLossComponent } from './admin-root/profit-loss/profit-loss.component';
-import { SuplierComponent } from './admin-root/suplier/suplier.component';
 import { ProductEffectivenessComponent } from './admin-root/product-effectiveness/product-effectiveness.component';
 import { PurchaseOrderComponent } from './admin-root/purchase-order/purchase-order.component';
 import { DeliveryOrderComponent } from './admin-root/delivery-order/delivery-order.component';
@@ -30,6 +29,11 @@ import { BrandFormComponent } from './admin-root/brand/brand-form/brand-form.com
 import { BrandListComponent } from './admin-root/brand/brand-list/brand-list.component';
 import { UomListComponent } from './admin-root/uom/uom-list/uom-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PoFormComponent } from './admin-root/purchase-order/po-form/po-form.component';
+import { SupplierComponent } from './admin-root/supplier/supplier.component';
+import { SupplierFormComponent } from './admin-root/supplier/supplier-form/supplier-form.component';
+import { SupplierListComponent } from './admin-root/supplier/supplier-list/supplier-list.component';
+import { PoSheetComponent } from './admin-root/purchase-order/po-sheet/po-sheet.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrandComponent,
     ProductComponent,
     ProfitLossComponent,
-    SuplierComponent,
     ProductEffectivenessComponent,
     PurchaseOrderComponent,
     DeliveryOrderComponent,
@@ -58,7 +61,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     UomFormComponent,
     BrandFormComponent,
     BrandListComponent,
-    UomListComponent
+    UomListComponent,
+    PoFormComponent,
+    SupplierComponent,
+    SupplierFormComponent,
+    SupplierListComponent,
+    PoSheetComponent,
     ],
   imports: [
     CommonModule,
