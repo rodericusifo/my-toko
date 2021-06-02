@@ -62,7 +62,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a
-                class="dropdown-item"
+                class="nav-link"
                 [routerLink]="'/admin/profit-loss'"
                 routerLinkActive="active"
               >
@@ -70,7 +70,7 @@
                 <span>Profit & Loss</span>
               </a>
               <a
-                class="dropdown-item"
+                class="nav-link"
                 [routerLink]="'/admin/product-effectiveness'"
                 routerLinkActive="active"
               >
@@ -122,6 +122,16 @@
           <li class="nav-item" *ngIf="isOwner() || isInventory()">
             <a
               class="nav-link"
+              [routerLink]="'/admin/supplier'"
+              routerLinkActive="active"
+            >
+              <i class="ni ni-user-run text-blue"></i>
+              <span class="nav-link-text">Supplier</span>
+            </a>
+          </li>
+          <li class="nav-item" *ngIf="isOwner() || isInventory()">
+            <a
+              class="nav-link"
               [routerLink]="'/admin/purchase-order'"
               routerLinkActive="active"
             >
@@ -164,7 +174,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <a
-                class="dropdown-item"
+                class="nav-link"
                 [routerLink]="'/admin/payable'"
                 routerLinkActive="active"
               >
@@ -172,7 +182,7 @@
                 <span>Payable</span>
               </a>
               <a
-                class="dropdown-item"
+                class="nav-link"
                 [routerLink]="'/admin/receivable'"
                 routerLinkActive="active"
               >
@@ -223,15 +233,8 @@
           class="navbar-search navbar-search-light form-inline mr-sm-3"
           id="navbar-search-main"
         >
-          <div class="form-group mb-0">
-            <div class="input-group input-group-alternative input-group-merge">
-              <div class="input-group-prepend">
-                <span class="input-group-text"
-                  ><i class="fa fa-search"></i
-                ></span>
-              </div>
-              <input class="form-control" placeholder="Search" type="text" />
-            </div>
+          <div class="form-group mb-0 mt-2">
+              <h1>MY TOKO Pak Acong</h1>
           </div>
           <button
             type="button"

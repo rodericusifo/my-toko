@@ -5,7 +5,6 @@ import { UserComponent } from './admin-root/user/user.component';
 import { HomeComponent } from './admin-root/home/home.component';
 import { BrandComponent } from './admin-root/brand/brand.component';
 import { ProductComponent } from './admin-root/product/product.component';
-import { SuplierComponent } from './admin-root/suplier/suplier.component';
 import { ProfitLossComponent } from './admin-root/profit-loss/profit-loss.component';
 import { AdminRootComponent } from './admin-root/admin-root.component';
 import { ProductEffectivenessComponent } from './admin-root/product-effectiveness/product-effectiveness.component';
@@ -17,6 +16,7 @@ import { ReceivableComponent } from './admin-root/receivable/receivable.componen
 import { OrderReceiptComponent } from './admin-root/order-receipt/order-receipt.component';
 import { OrderComponent } from './admin-root/order/order.component';
 import { UomComponent } from './admin-root/uom/uom.component';
+import { SupplierComponent } from './admin-root/supplier/supplier.component';
 
 const routes: Routes = [
   {
@@ -28,7 +28,7 @@ const routes: Routes = [
       { path: 'user', component: UserComponent },
       { path: 'brand', component: BrandComponent },
       { path: 'product', component: ProductComponent },
-      { path: 'suplier', component: SuplierComponent},
+      { path: 'supplier', component: SupplierComponent},
       { path: 'profit-loss', component: ProfitLossComponent},
       { path: 'product-effectiveness', component: ProductEffectivenessComponent},
       { path: 'purchase-order', component: PurchaseOrderComponent},
