@@ -7,13 +7,9 @@
             </tr>
         </thead>
         <tbody class="list">
-            <tr>
-                <td class="no">
-                    1
-                </td>
-                <td class="name">
-                    Rizka Indah Puspita
-                </td>
+            <tr *ngFor="let brand of brands; let i = index">
+                <td class="no">{{ i + 1 }}</td>
+                <td class="name">{{ brand.name }}</td>
             </tr>
         </tbody>
     </table>

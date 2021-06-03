@@ -34,6 +34,7 @@ import { SupplierComponent } from './admin-root/supplier/supplier.component';
 import { SupplierFormComponent } from './admin-root/supplier/supplier-form/supplier-form.component';
 import { SupplierListComponent } from './admin-root/supplier/supplier-list/supplier-list.component';
 import { PoSheetComponent } from './admin-root/purchase-order/po-sheet/po-sheet.component';
+import { PoListComponent } from './admin-root/purchase-order/po-list/po-list.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { PoSheetComponent } from './admin-root/purchase-order/po-sheet/po-sheet.
     SupplierFormComponent,
     SupplierListComponent,
     PoSheetComponent,
+    PoListComponent,
     ],
   imports: [
     CommonModule,
