@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ISupplier } from 'src/app/interfaces/supplier-interface';
 
 @Component({
   selector: 'app-supplier-list',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./supplier-list.component.css']
 })
 export class SupplierListComponent implements OnInit {
+  @Input() suppliers!: ISupplier[]
 
   constructor() { }
 
