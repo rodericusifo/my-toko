@@ -17,6 +17,7 @@ import { OrderReceiptComponent } from './admin-root/order-receipt/order-receipt.
 import { OrderComponent } from './admin-root/order/order.component';
 import { UomComponent } from './admin-root/uom/uom.component';
 import { SupplierComponent } from './admin-root/supplier/supplier.component';
+import { PoSheetComponent } from './admin-root/purchase-order/po-sheet/po-sheet.component';
 
 const routes: Routes = [
   {
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: 'profit-loss', component: ProfitLossComponent},
       { path: 'product-effectiveness', component: ProductEffectivenessComponent},
       { path: 'purchase-order', component: PurchaseOrderComponent},
+      { path: 'purchase-order/po-sheet', component: PoSheetComponent},
       { path: 'delivery-order', component: DeliveryOrderComponent},
       { path: 'invoice', component: InvoiceComponent},
       { path: 'payable', component: PayableComponent},

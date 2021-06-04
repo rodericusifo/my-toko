@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IBrand } from 'src/app/interfaces/brand-interface';
 
 @Component({
   selector: 'app-brand-list',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./brand-list.component.css']
 })
 export class BrandListComponent implements OnInit {
+  @Input() brands!: IBrand[]
 
   constructor() { }
 
