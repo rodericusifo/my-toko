@@ -1,28 +1,36 @@
 <div class="table-responsive mt-4">
-    <table class="table align-items-center">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col" class="sort text-white text-default" data-sort="no">No</th>
-                <th scope="col" class="sort text-white" data-sort="name">Name</th>
-                <th scope="col" class="sort text-white" data-sort="companyName">Company Name</th>
-                <th scope="col" class="sort text-white" data-sort="email">Email</th>
-                <th scope="col" class="sort text-white" data-sort="phoneNumber">Phone</th>
-                <th scope="col" class="sort text-white" data-sort="discount">Discount</th>
-            </tr>
-        </thead>
-        <tbody class="list">
-            <tr *ngFor="let supplier of suppliers; let i = index">
-                <td class="no">{{ i + 1 }}</td>
-                <td class="name">{{ supplier.name }}</td>
-                <td class="companyName">{{ supplier.companyName }}</td>
-                <td class="email">{{ supplier.email }}</td>
-                <td class="phoneNumber">{{ supplier.phoneNumber }}</td>
-                <td class="discount">{{ supplier.discount }}</td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table align-items-center">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" class="sort text-white text-default" data-sort="no">
+          No
+        </th>
+        <th scope="col" class="sort text-white" data-sort="name">Name</th>
+        <th scope="col" class="sort text-white" data-sort="companyName">
+          Company Name
+        </th>
+        <th scope="col" class="sort text-white" data-sort="email">Email</th>
+        <th scope="col" class="sort text-white" data-sort="phoneNumber">
+          Phone
+        </th>
+        <th scope="col" class="sort text-white" data-sort="discount">
+          Discount
+        </th>
+        <th scope="col" class="sort text-white" data-sort="createdAt">
+          Created At
+        </th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <tr *ngFor="let supplier of suppliers; let i = index">
+        <td class="no">{{ i + 1 }}</td>
+        <td class="name">{{ supplier.name }}</td>
+        <td class="companyName">{{ supplier.companyName }}</td>
+        <td class="email">{{ supplier.email }}</td>
+        <td class="phoneNumber">{{ supplier.phoneNumber }}</td>
+        <td class="discount">{{ supplier.discount + "%" }}</td>
+        <td class="createdAt">{{ supplier.createdAt }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
-
-
-

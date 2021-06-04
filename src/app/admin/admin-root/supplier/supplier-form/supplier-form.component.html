@@ -1,74 +1,134 @@
 <div class="card mt-2">
-    <div class="card-body">
-        <form [formGroup]="createSupplierForm" (ngSubmit)="onSubmit()">
-            <div class="row">
-                <div class="form-group col-6">
-                    <label for="example-text-input" class="form-control-label">Name</label>
-                    <input
-                    class="form-control"
-                    type="text"
-                    id="example-text-input"
-                    placeholder="Name"
-                    formControlName="name"
-                    required>
-                </div>
-                <div class="form-group col-6">
-                    <label for="example-text-input" class="form-control-label">Company Name</label>
-                    <input
-                    class="form-control"
-                    type="text"
-                    id="example-text-input"
-                    placeholder="Company Name"
-                    formControlName="companyName"
-                    required>
-                </div>
+  <div class="card-body">
+    <form [formGroup]="createSupplierForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="example-text-input" class="form-control-label"
+            >Name</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Name"
+            formControlName="name"
+            required
+          />
+          <small
+            *ngIf="
+              !createSupplierForm.get('name')!.valid &&
+              createSupplierForm.get('name')!.touched
+            "
+            class="help-block text-danger"
+            >Supplier name is required</small
+          >
+        </div>
+        <div class="form-group col-6">
+          <label for="example-text-input" class="form-control-label"
+            >Company Name</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Company Name"
+            formControlName="companyName"
+            required
+          />
+          <small
+            *ngIf="
+              !createSupplierForm.get('companyName')!.valid &&
+              createSupplierForm.get('companyName')!.touched
+            "
+            class="help-block text-danger"
+            >Supplier company name is required</small
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="example-text-input" class="form-control-label"
+            >Email</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Email"
+            formControlName="email"
+            required
+            email
+          />
+          <small
+            *ngIf="
+              !createSupplierForm.get('email')!.valid &&
+              createSupplierForm.get('email')!.touched
+            "
+            class="help-block text-danger"
+            >Supplier email is required</small
+          >
+        </div>
+        <div class="form-group col-6">
+          <label for="example-text-input" class="form-control-label"
+            >Phone</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Phone"
+            formControlName="phoneNumber"
+            required
+          />
+          <small
+            *ngIf="
+              !createSupplierForm.get('phoneNumber')!.valid &&
+              createSupplierForm.get('phoneNumber')!.touched
+            "
+            class="help-block text-danger"
+            >Supplier phone is required</small
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="example-text-input" class="form-control-label"
+            >Discount</label
+          >
+          <div class="form-group">
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Discount"
+                aria-label="Discount"
+                aria-describedby="basic-addon2"
+                formControlName="discount"
+                required
+              />
+              <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2">%</span>
+              </div>
             </div>
-            <div class="row">
-                <div class="form-group col-6">
-                    <label for="example-text-input" class="form-control-label">Email</label>
-                    <input
-                    class="form-control"
-                    type="text"
-                    id="example-text-input"
-                    placeholder="Email"
-                    formControlName="email"
-                    required>
-                </div>
-                <div class="form-group col-6">
-                    <label for="example-text-input" class="form-control-label">Phone</label>
-                    <input
-                    class="form-control"
-                    type="text"
-                    id="example-text-input"
-                    placeholder="Phone"
-                    formControlName="phoneNumber"
-                    required>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-6">
-                    <label for="example-text-input" class="form-control-label">Discount</label>
-                    <div class="form-group">
-                        <div class="input-group">
-                          <input
-                          type="text"
-                          class="form-control"
-                          placeholder="Discount"
-                          aria-label="Discount"
-                          aria-describedby="basic-addon2"
-                          formControlName="discount"
-                          required>
-                          <div class="input-group-append">
-                            <span class="input-group-text" id="basic-addon2">%</span>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div>
-                <button class="btn btn-outline-primary">Create</button>
-            </div>
-        </form>
-    </div>
+            <small
+              *ngIf="
+                !createSupplierForm.get('discount')!.valid &&
+                createSupplierForm.get('discount')!.touched
+              "
+              class="help-block text-danger"
+              >Supplier discount is required</small
+            >
+          </div>
+        </div>
+      </div>
+      <div>
+        <button
+          [disabled]="!createSupplierForm.valid"
+          class="btn btn-outline-primary"
+        >
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
-
