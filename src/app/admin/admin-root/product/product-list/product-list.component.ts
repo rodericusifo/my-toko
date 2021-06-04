@@ -1,15 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { IProduct } from 'src/app/interfaces/product-interface';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
+  @Input() products!: IProduct[];
+  @Output() editProduct!: EventEmitter<{
+    productID: string;
+    name: string;
+    code: string;
+  }>;
+  editProductForm!: FormGroup;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder) {
+    this.editProduct = new EventEmitter<{
+      productID: string;
+      name: string;
+      code: string;
+    }>();
   }
 
+  ngOnInit(): void {
+    this.initEditProductForm();
+  }
+
+  initEditProductForm() {
+    this.editProductForm = this.fb.group({
+      name: [null, [Validators.required]],
+      code: [null, [Validators.required, Validators.pattern('^[0-9]+$')]],
+    });
+  }
+
+  onSubmit(productID: string) {
+    this.editProductForm.value.productID = productID;
+    this.editProductForm.value.code = `PRD${this.editProductForm.value.code}`;
+    this.editProduct.emit(this.editProductForm.value);
+  }
 }
