@@ -35,7 +35,7 @@ export class SupplierFormComponent implements OnInit {
       name: [null, [Validators.required ]],
       companyName: [null, [Validators.required]],
       phoneNumber: [null, [Validators.required]],
-      email: [null, [Validators.required]],
+      email: [null, [Validators.required, Validators.email]],
       discount: [null, [Validators.required]],
     });
   }

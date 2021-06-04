@@ -1,51 +1,121 @@
 <div class="card mt-2">
   <div class="card-body">
-      <form>
-            <div class="form-group row">
-                <label for="example-text-input" class="form-control-label col-12 col-sm-3 mt-2">Name</label>
-                <div class="input-group input-group col-12 col-sm-9">
-                    <input class="form-control" type="text" id="example-text-input" placeholder="Name">
-                </div>
-            </div>
-            <!-- <div class="form-group row">
-                <label for="example-text-input" class="form-control-label col-12 col-sm-3 mt-2">Stock</label>
-                <div class="input-group input-group col-12 col-sm-9">
-                    <input class="form-control" type="text" id="example-text-input" placeholder="Stock">
-                </div>
-            </div> -->
-            <div class="form-group row">
-                <label for="example-text-input" class="form-control-label col-12 col-sm-3 mt-2">Purchase Price</label>
-                <div class="input-group input-group col-12 col-sm-9">
-                    <input class="form-control" type="text" id="example-text-input" placeholder="Purchase Price">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-text-input" class="form-control-label col-12 col-sm-3 mt-2">Selling Price</label>
-                <div class="input-group input-group col-12 col-sm-9">
-                    <input class="form-control" type="text" id="example-text-input" placeholder="Selling Price">
-                </div>
-            </div>
-            <!-- <div class="form-group row">
-                <label for="example-text-input" class="form-control-label col-12 col-sm-3 mt-2">Active</label>
-                <div class="input-group input-group col-12 col-sm-9">
-                    <select class="form-control" data-toggle="select" title="Simple select" data-live-search="true" data-live-search-placeholder="Search ...">
-                        <option>Active</option>
-                        <option>Deactive</option>
-                    </select>
-                </div>
-            </div> -->
-            <div class="form-group row">
-                <label for="example-text-input" class="form-control-label col-12 col-sm-3 mt-2">Product</label>
-                <div class="input-group input-group col-12 col-sm-9">
-                    <select class="form-control" data-toggle="select" title="Simple select" data-live-search="true" data-live-search-placeholder="Search ...">
-                        <option>Indomie</option>
-                        <option>Indofood</option>
-                    </select>
-                </div>
-            </div>
-            <div>
-                <button class="btn btn-primary">Create</button>
-            </div>
-        </form>
-    </div>
+    <form [formGroup]="createUOMForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label
+          for="example-text-input"
+          class="form-control-label col-12 col-sm-3 mt-2"
+          >Name</label
+        >
+        <div class="input-group input-group col-12 col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Name"
+            formControlName="name"
+            required
+          />
+        </div>
+        <small
+          *ngIf="
+            !createUOMForm.get('name')!.valid &&
+            createUOMForm.get('name')!.touched
+          "
+          class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+          >Unit of measure name is required</small
+        >
+      </div>
+      <div class="form-group row">
+        <label
+          for="example-text-input"
+          class="form-control-label col-12 col-sm-3 mt-2"
+          >Purchase Price</label
+        >
+        <div class="input-group input-group col-12 col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Purchase Price"
+            formControlName="purchasePrice"
+            required
+          />
+        </div>
+        <small
+          *ngIf="
+            !createUOMForm.get('purchasePrice')!.valid &&
+            createUOMForm.get('purchasePrice')!.touched
+          "
+          class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+          >Unit of measure purchase price is required</small
+        >
+      </div>
+      <div class="form-group row">
+        <label
+          for="example-text-input"
+          class="form-control-label col-12 col-sm-3 mt-2"
+          >Selling Price</label
+        >
+        <div class="input-group input-group col-12 col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Selling Price"
+            formControlName="sellingPrice"
+            required
+          />
+        </div>
+        <small
+          *ngIf="
+            !createUOMForm.get('sellingPrice')!.valid &&
+            createUOMForm.get('sellingPrice')!.touched
+          "
+          class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+          >Unit of measure selling price is required</small
+        >
+      </div>
+      <div class="form-group row">
+        <label
+          for="example-text-input"
+          class="form-control-label col-12 col-sm-3 mt-2"
+          >Product</label
+        >
+        <div class="input-group input-group col-12 col-sm-9">
+          <select
+            class="form-control"
+            data-toggle="select"
+            title="Simple select"
+            data-live-search="true"
+            data-live-search-placeholder="Search ..."
+            formControlName="Product"
+            required
+          >
+            <option [ngValue]="null" disabled>--- Choose Product ---</option>
+            <option *ngFor="let product of products" [ngValue]="product._id">
+              {{ product.name }}
+            </option>
+          </select>
+        </div>
+        <small
+          *ngIf="
+            !createUOMForm.get('Product')!.valid &&
+            createUOMForm.get('Product')!.touched
+          "
+          class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+          >Unit of measure product is required</small
+        >
+      </div>
+      <div>
+        <button
+          type="submit"
+          [disabled]="!createUOMForm.valid"
+          class="btn btn-primary"
+        >
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
