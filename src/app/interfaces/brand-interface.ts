@@ -1,7 +1,7 @@
 interface IBrand {
-    _id: string;
-    name: string;
-    createdAt: string;
+  _id: string;
+  name: string;
+  createdAt: string;
 }
 
 export { IBrand };

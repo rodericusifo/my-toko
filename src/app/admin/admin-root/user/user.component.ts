@@ -36,8 +36,8 @@ export class UserComponent implements OnInit {
     this.userCreateSubscription = this.userService.createUser(user).subscribe(
       (response) => {
         console.log(response);
-        this.userCreateSubscription.unsubscribe();
         this.isError = false;
+        this.userCreateSubscription.unsubscribe();
         this.ngOnInit();
         Swal.fire({
           icon: 'success',

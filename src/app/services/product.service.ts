@@ -14,16 +14,16 @@ import { AuthInfoService } from './auth-info.service';
 @Injectable({
   providedIn: 'root',
 })
-export class BrandService {
+export class ProductService {
   constructor(
     private http: HttpClient,
     private authInfoService: AuthInfoService
   ) {}
 
-  public getBrandList(): Observable<HttpResponse<IResponse>> {
+  public getProductList(): Observable<HttpResponse<IResponse>> {
     return this.http
       .get<IResponse>(
-        `${environment.API_URL}brands/list?userID=${
+        `${environment.API_URL}products/list?userID=${
           this.authInfoService.getDecodedToken().id
         }`,
         {
@@ -37,15 +37,41 @@ export class BrandService {
       .pipe(catchError(this.handlingError));
   }
 
-  public createBrand(brand: {
+  public createProduct(product: {
     name: string;
+    code: string;
+    Brand: string;
   }): Observable<HttpResponse<IResponse>> {
     return this.http
       .post<IResponse>(
-        `${environment.API_URL}brands/create?userID=${
+        `${environment.API_URL}products/create?userID=${
           this.authInfoService.getDecodedToken().id
         }`,
-        brand,
+        product,
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            Authorization: this.authInfoService.getAuth()!,
+          }),
+          observe: 'response',
+        }
+      )
+      .pipe(catchError(this.handlingError));
+  }
+
+  public editProduct(
+    productID: string,
+    product: {
+      name: string;
+      code: string;
+    }
+  ): Observable<HttpResponse<IResponse>> {
+    return this.http
+      .put<IResponse>(
+        `${environment.API_URL}products/${productID}/edit?userID=${
+          this.authInfoService.getDecodedToken().id
+        }`,
+        product,
         {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',

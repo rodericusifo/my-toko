@@ -73,8 +73,17 @@
         data-live-search-placeholder="Search ..."
         formControlName="role"
       >
+        <option [ngValue]="null" disabled>--- Choose User Role ---</option>
         <option *ngFor="let role of roles" [ngValue]="role">{{ role }}</option>
       </select>
+      <small
+        *ngIf="
+          !createUserForm.get('role')!.valid &&
+          createUserForm.get('role')!.touched
+        "
+        class="help-block text-danger"
+        >Please Choose User Role</small
+      >
     </div>
     <div>
       <button

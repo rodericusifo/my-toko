@@ -1,13 +1,14 @@
-import { IBrand } from "./brand-interface";
+import { IBrand } from './brand-interface';
+import { IProduct } from './product-interface';
+import { IUser } from './user-interface';
 import { ISupplier } from "./supplier-interface";
-import { IUser } from "./user-interface";
 
 interface IData {
-    Suppliers: ISupplier[];
-    Authorization?: string;
-    Users?: IUser[];
-    Brands?: IBrand[];
-    Supplier?: ISupplier[];
+  Authorization?: string;
+  Users?: IUser[];
+  Brands?: IBrand[];
+  Products?: IProduct[];
+  Suppliers?: ISupplier[];
 }
 
 export { IData };

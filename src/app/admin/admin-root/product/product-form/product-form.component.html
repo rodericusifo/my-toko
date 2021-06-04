@@ -1,43 +1,118 @@
 <div class="card mt-2">
-    <div class="card-body">
-        <form>
-            <div class="form-group row">
-                <label for="example-text-input" class="form-control-label col-12 col-sm-3 mt-2">Name</label>
-                <div class="input-group input-group col-12 col-sm-9">
-                    <input class="form-control" type="text" id="example-text-input" placeholder="Name">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-text-input" class="form-control-label col-12 col-sm-3 mt-2">Image</label>
-                <div class="col-12 col-sm-9">
-                    <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="customFileLang" lang="en">
-                        <label class="custom-file-label" for="customFileLang">Select file</label>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-text-input" class="form-control-label col-12 col-sm-3 mt-2">Code</label>
-                <div class="input-group input-group col-12 col-sm-9">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroup-sizing-default">PRD</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="example-text-input" class="form-control-label col-12 col-sm-3 mt-2">Brand</label>
-                <div class="input-group input-group col-12 col-sm-9">
-                    <select class="form-control" data-toggle="select" title="Simple select" data-live-search="true" data-live-search-placeholder="Search ...">
-                        <option>Indofood</option>
-                        <option>Unilever</option>
-                        <option>Coca cola</option>
-                    </select>
-                </div>
-            </div>
-            <div>
-                <button class="btn btn-primary">Create</button>
-            </div>
-        </form>
-    </div>
+  <div class="card-body">
+    <form [formGroup]="createProductForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <label
+          for="example-text-input"
+          class="form-control-label col-12 col-sm-3 mt-2"
+          >Name</label
+        >
+        <div class="input-group input-group col-12 col-sm-9">
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Name"
+            formControlName="name"
+            required
+          />
+        </div>
+        <small
+          *ngIf="
+            !createProductForm.get('name')!.valid &&
+            createProductForm.get('name')!.touched
+          "
+          class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+          >Product name is required</small
+        >
+      </div>
+      <div class="form-group row">
+        <label
+          for="example-text-input"
+          class="form-control-label col-12 col-sm-3 mt-2"
+          >Code</label
+        >
+        <div class="input-group input-group col-12 col-sm-9">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >PRD</span
+            >
+          </div>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default"
+            pattern="^[0-9]+$"
+            formControlName="code"
+            required
+          />
+        </div>
+        <small
+          *ngIf="
+            !createProductForm.get('code')!.valid &&
+            createProductForm.get('code')!.touched
+          "
+          class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+          >Product code is required and only contains numbers</small
+        >
+      </div>
+      <div class="form-group row">
+        <label
+          for="example-text-input"
+          class="form-control-label col-12 col-sm-3 mt-2"
+          >Brand</label
+        >
+        <div class="input-group input-group col-12 col-sm-9">
+          <select
+            class="form-control"
+            data-toggle="select"
+            title="Simple select"
+            data-live-search="true"
+            data-live-search-placeholder="Search ..."
+            formControlName="Brand"
+            required
+          >
+            <option [ngValue]="null" disabled>
+              --- Choose product brand ---
+            </option>
+            <option *ngFor="let brand of brands" [ngValue]="brand._id">
+              {{ brand.name }}
+            </option>
+          </select>
+        </div>
+        <small
+          *ngIf="
+            !createProductForm.get('Brand')!.valid &&
+            createProductForm.get('Brand')!.touched
+          "
+          class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+          >Product brand is required</small
+        >
+      </div>
+      <div class="form-group row">
+        <label
+          for="example-text-input"
+          class="form-control-label col-12 col-sm-3 mt-2"
+          >Image</label
+        >
+        <div class="col-12 col-sm-9">
+          <div class="custom-file">
+            <input
+              type="file"
+              class="custom-file-input"
+              id="customFileLang"
+              lang="en"
+            />
+            <label class="custom-file-label" for="customFileLang"
+              >Select file</label
+            >
+          </div>
+        </div>
+      </div>
+      <div>
+        <button [disabled]="!createProductForm.valid" type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
 </div>

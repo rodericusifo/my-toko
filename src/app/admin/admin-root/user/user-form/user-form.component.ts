@@ -35,7 +35,7 @@ export class UserFormComponent implements OnInit {
       name: [null, [Validators.required]],
       email: [null, [Validators.required, Validators.email]],
       password: [null, [Validators.required, Validators.minLength(6)]],
-      role: [this.roles[0]],
+      role: [null, [Validators.required]],
     });
   }
 

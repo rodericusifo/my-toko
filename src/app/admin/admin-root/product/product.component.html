@@ -1,7 +1,20 @@
 <div class="container mt-3">
-  <div>
-      <h2>Data Product</h2>
+  <div *ngIf="isLoaded">
+    <h2>Data Product</h2>
   </div>
-  <app-product-form></app-product-form>
-  <app-product-list></app-product-list>
+  <app-product-form
+    *ngIf="isLoaded"
+    (createProduct)="createProduct($event)"
+    [brands]="brands"
+  ></app-product-form>
+  <app-product-list
+    (editProduct)="editProduct($event)"
+    [products]="products"
+    *ngIf="isLoaded && !isError"
+  ></app-product-list>
+  <app-page-error
+    [errorMessage]="errorMessage"
+    *ngIf="isLoaded && isError"
+  ></app-page-error>
+  <app-page-admin-loader *ngIf="!isLoaded"></app-page-admin-loader>
 </div>
