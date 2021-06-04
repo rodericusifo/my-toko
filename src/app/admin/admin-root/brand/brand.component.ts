@@ -7,7 +7,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-brand',
   templateUrl: './brand.component.html',
-  styleUrls: ['./brand.component.css']
+  styleUrls: ['./brand.component.css'],
 })
 export class BrandComponent implements OnInit {
   isLoaded!: boolean;
@@ -20,42 +20,42 @@ export class BrandComponent implements OnInit {
   constructor(private brandService: BrandService) {
     this.isLoaded = true;
     this.isError = false;
-    this.errorMessage = 'No Brand has been Created yet'
+    this.errorMessage = 'No Brand has been Created yet';
   }
 
   ngOnInit(): void {
     this.getBrandList();
   }
 
-  createBrand(brand: {
-    name: string;
-  }) {
-    this.brandCreateSubscription = this.brandService.createBrand(brand).subscribe(
-      (response) =>{
-        console.log(response);
-        this.brandCreateSubscription.unsubscribe();
-        this.isError = false;
-        this.ngOnInit();
-        Swal.fire({
-          icon: 'success',
-          title: 'Create Brand Success',
-          showConfirmButton: true,
-          timer: 3000,
-        });
-      },
-      (err) => {
-        console.log(err);
-        this.brandCreateSubscription.unsubscribe();
-        this.ngOnInit();
-        Swal.fire({
-          icon: 'error',
-          title: 'Create Brand Failed',
-          text: err.error.message.split(':')[1].trim(),
-          showConfirmButton: true,
-          timer: 3000,
-        });
-      }
-    )
+  createBrand(brand: { name: string }) {
+    this.brandCreateSubscription = this.brandService
+      .createBrand(brand)
+      .subscribe(
+        (response) => {
+          console.log(response);
+          this.isError = false;
+          this.brandCreateSubscription.unsubscribe();
+          this.ngOnInit();
+          Swal.fire({
+            icon: 'success',
+            title: 'Create Brand Success',
+            showConfirmButton: true,
+            timer: 3000,
+          });
+        },
+        (err) => {
+          console.log(err);
+          this.brandCreateSubscription.unsubscribe();
+          this.ngOnInit();
+          Swal.fire({
+            icon: 'error',
+            title: 'Create Brand Failed',
+            text: err.error.message.split(':')[1].trim(),
+            showConfirmButton: true,
+            timer: 3000,
+          });
+        }
+      );
   }
 
   getBrandList() {
@@ -63,7 +63,17 @@ export class BrandComponent implements OnInit {
     this.brandListSubscription = this.brandService.getBrandList().subscribe(
       (response) => {
         console.log(response);
-        this.brands = response.body!.data!.Brands!;
+        this.brands = response.body!.data!.Brands!.map((Brand) => {
+          return {
+            _id: Brand._id,
+            name: Brand.name,
+            createdAt: Brand.createdAt
+              .split('T')[0]
+              .split('-')
+              .reverse()
+              .join('-'),
+          };
+        });
         this.brandListSubscription.unsubscribe();
         this.isLoaded = true;
       },
@@ -75,5 +85,4 @@ export class BrandComponent implements OnInit {
       }
     );
   }
-
 }

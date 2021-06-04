@@ -13,23 +13,45 @@
         <th scope="col" class="sort text-white" data-sort="selling">
           Selling Price
         </th>
-        <th scope="col" class="sort text-white" data-sort="product">Product</th>
+        <th scope="col" class="sort text-white" data-sort="productName">
+          Product Name
+        </th>
+        <th scope="col" class="sort text-white" data-sort="productBrand">
+          Product Brand
+        </th>
         <th scope="col" class="sort text-white" data-sort="status">Status</th>
+        <th scope="col" class="sort text-white" data-sort="createdAt">
+          Created At
+        </th>
         <th scope="col" class="sort text-white" data-sort="action">Action</th>
       </tr>
     </thead>
     <tbody class="list">
-      <tr>
-        <td class="no">1</td>
-        <td class="name">Nabila Khaerunnisa</td>
-        <td class="stock">1</td>
-        <td class="purchase">10000</td>
-        <td class="selling">20000</td>
-        <td class="product">Indomie</td>
-        <td class="status">ACTIVE</td>
+      <tr *ngFor="let UOM of UOMList; let i = index">
+        <td class="no">{{ i + 1 }}</td>
+        <td class="name">{{ UOM.name }}</td>
+        <td class="stock">{{ UOM.stock }}</td>
+        <td class="purchase">{{ UOM.purchasePrice }}</td>
+        <td class="selling">{{ UOM.sellingPrice }}</td>
+        <td class="productName">{{ UOM.Product.name }}</td>
+        <td class="productBrand">{{ UOM.Product.Brand.name }}</td>
+        <td class="status">{{ UOM.status }}</td>
+        <td class="createdAt">{{ UOM.createdAt }}</td>
         <td class="action">
-          <button class="btn btn-outline-primary">Activate</button>
-          <button class="btn btn-outline-warning">Deactivate</button>
+          <button
+            *ngIf="UOM.status === 'NOT ACTIVE'"
+            class="btn btn-outline-primary"
+            (click)="activate(UOM._id)"
+          >
+            Activate
+          </button>
+          <button
+            *ngIf="UOM.status === 'ACTIVE'"
+            class="btn btn-outline-warning"
+            (click)="deactivate(UOM._id)"
+          >
+            Deactivate
+          </button>
         </td>
       </tr>
     </tbody>

@@ -5,7 +5,6 @@ import { Component, OnInit } from '@angular/core';
 import { IBrand } from 'src/app/interfaces/brand-interface';
 import { Subscription } from 'rxjs';
 import { IProduct } from 'src/app/interfaces/product-interface';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
