@@ -33,7 +33,7 @@ const routes: Routes = [
       { path: 'profit-loss', component: ProfitLossComponent},
       { path: 'product-effectiveness', component: ProductEffectivenessComponent},
       { path: 'purchase-order', component: PurchaseOrderComponent},
-      { path: 'purchase-order/po-sheet', component: PoSheetComponent},
+      { path: 'purchase-order/:purchaseOrderID', component: PoSheetComponent},
       { path: 'delivery-order', component: DeliveryOrderComponent},
       { path: 'invoice', component: InvoiceComponent},
       { path: 'payable', component: PayableComponent},
