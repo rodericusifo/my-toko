@@ -35,11 +35,12 @@
         <td class="createdAt">{{ product.createdAt }}</td>
         <td class="action">
           <form
-            style="width: 500px"
+            style="width: 1000px"
             [formGroup]="editProductForm"
             (ngSubmit)="onSubmit(product._id)"
+            class="row mt--2 mb--4"
           >
-            <div class="form-group">
+            <div class="form-group col-12 col-sm-3">
               <label for="example-text-input" class="form-control-label"
                 >Name</label
               >
@@ -62,7 +63,7 @@
                 >Product name is required</small
               >
             </div>
-            <div class="form-group">
+            <div class="form-group col-12 col-sm-4">
               <label for="example-text-input" class="form-control-label"
                 >Code</label
               >
@@ -91,7 +92,7 @@
                 >Product code is required and only contains numbers</small
               >
             </div>
-            <div class="form-group">
+            <div class="form-group col-12 col-sm-4">
               <label for="example-text-input" class="form-control-label"
                 >Image</label
               >
@@ -111,7 +112,7 @@
               <button
                 [disabled]="!editProductForm.valid"
                 type="submit"
-                class="btn btn-primary"
+                class="btn btn-primary mt-4"
               >
                 Edit
               </button>
