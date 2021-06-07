@@ -1,0 +1,121 @@
+<div class="container mt-3">
+  <div class="ml-3">
+    <h1>Purchase Order</h1>
+    <div class="row mt-3">
+      <div class="col-6">
+        <h3>PO Date</h3>
+        <p>04-06-2021</p>
+      </div>
+      <div class="col-6">
+        <h3>PO Number</h3>
+        <p>PO 078</p>
+      </div>
+    </div>
+    <hr />
+    <div class="row mt-3">
+      <div class="col-6">
+        <h3>Vendor</h3>
+        <p>name</p>
+        <p>companyName</p>
+        <p>phoneNumber</p>
+        <p>email</p>
+      </div>
+      <div class="col-6">
+        <h3>Ship to</h3>
+        <p>name</p>
+        <p>companyName</p>
+        <p>phoneNumber</p>
+        <p>email</p>
+      </div>
+    </div>
+    <hr />
+    <div class="row mt-3">
+      <div class="col-6">
+        <div class="input-group input-group">
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Product - UOM"
+          />
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="input-group input-group">
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Quantity"
+          />
+        </div>
+      </div>
+      <div class="col-2">
+        <button class="btn btn-success">Add Product</button>
+      </div>
+    </div>
+    <hr />
+    <div class="table-responsive mt-4">
+      <table class="table align-items-center">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col" class="sort text-dark Th" data-sort="no">No</th>
+            <th scope="col" class="sort text-dark Th" data-sort="po-uom">
+              Product - UOM
+            </th>
+            <th
+              scope="col"
+              class="sort text-dark Th text-right"
+              data-sort="remaining"
+            >
+              Remaining
+            </th>
+            <th
+              scope="col"
+              class="sort text-dark Th text-right"
+              data-sort="quantity"
+            >
+              Quantity
+            </th>
+            <th
+              scope="col"
+              class="sort text-dark Th text-right"
+              data-sort="price"
+            >
+              Price
+            </th>
+            <th
+              scope="col"
+              class="sort text-dark Th text-right"
+              data-sort="amount"
+            >
+              Amount
+            </th>
+          </tr>
+        </thead>
+        <tbody class="list">
+          <tr>
+            <td class="Td no">1</td>
+            <td class="Td po-uom">Indomie Goreng - Box</td>
+            <td class="Td remaining text-right">3</td>
+            <td class="Td quantity text-right">3</td>
+            <td class="Td price text-right">Rp. 1000</td>
+            <td class="Td amount text-right">Rp. 3000</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="row justify-content-end mr-1">
+      <p class="col-2 text-right font-weight-bold">Subtotal</p>
+      <p class="col-2 text-right">Rp 32.000</p>
+    </div>
+    <div class="row justify-content-end mr-1">
+      <p class="col-2 text-right font-weight-bold">Discount</p>
+      <p class="col-2 text-right">10%</p>
+    </div>
+    <div class="row justify-content-end mr-1">
+      <p class="col-2 text-right font-weight-bold">Total</p>
+      <p class="col-2 text-right">Rp. 5.000.000.000</p>
+    </div>
+  </div>
+</div>

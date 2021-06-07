@@ -1,3 +1,4 @@
+import { PurchaseOrderSheetComponent } from './admin-root/purchase-order-sheet/purchase-order-sheet.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -17,7 +18,6 @@ import { OrderReceiptComponent } from './admin-root/order-receipt/order-receipt.
 import { OrderComponent } from './admin-root/order/order.component';
 import { UomComponent } from './admin-root/uom/uom.component';
 import { SupplierComponent } from './admin-root/supplier/supplier.component';
-import { PoSheetComponent } from './admin-root/purchase-order/po-sheet/po-sheet.component';
 
 const routes: Routes = [
   {
@@ -29,18 +29,24 @@ const routes: Routes = [
       { path: 'user', component: UserComponent },
       { path: 'brand', component: BrandComponent },
       { path: 'product', component: ProductComponent },
-      { path: 'supplier', component: SupplierComponent},
-      { path: 'profit-loss', component: ProfitLossComponent},
-      { path: 'product-effectiveness', component: ProductEffectivenessComponent},
-      { path: 'purchase-order', component: PurchaseOrderComponent},
-      { path: 'purchase-order/:purchaseOrderID', component: PoSheetComponent},
-      { path: 'delivery-order', component: DeliveryOrderComponent},
-      { path: 'invoice', component: InvoiceComponent},
-      { path: 'payable', component: PayableComponent},
-      { path: 'receivable', component: ReceivableComponent},
-      { path: 'order', component: OrderComponent},
-      { path: 'order-receipt', component: OrderReceiptComponent},
-      { path: 'uom', component: UomComponent},
+      { path: 'supplier', component: SupplierComponent },
+      { path: 'profit-loss', component: ProfitLossComponent },
+      {
+        path: 'product-effectiveness',
+        component: ProductEffectivenessComponent,
+      },
+      { path: 'purchase-order', component: PurchaseOrderComponent },
+      {
+        path: 'purchase-order/:purchaseOrderID',
+        component: PurchaseOrderSheetComponent,
+      },
+      { path: 'delivery-order', component: DeliveryOrderComponent },
+      { path: 'invoice', component: InvoiceComponent },
+      { path: 'payable', component: PayableComponent },
+      { path: 'receivable', component: ReceivableComponent },
+      { path: 'order', component: OrderComponent },
+      { path: 'order-receipt', component: OrderReceiptComponent },
+      { path: 'uom', component: UomComponent },
     ],
   },
 ];

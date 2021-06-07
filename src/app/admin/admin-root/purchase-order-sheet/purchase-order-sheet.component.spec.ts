@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PoSheetComponent } from './po-sheet.component';
+import { PurchaseOrderSheetComponent } from './purchase-order-sheet.component';
 
-describe('PoSheetComponent', () => {
-  let component: PoSheetComponent;
-  let fixture: ComponentFixture<PoSheetComponent>;
+describe('PurchaseOrderSheetComponent', () => {
+  let component: PurchaseOrderSheetComponent;
+  let fixture: ComponentFixture<PurchaseOrderSheetComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PoSheetComponent ]
+      declarations: [ PurchaseOrderSheetComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PoSheetComponent);
+    fixture = TestBed.createComponent(PurchaseOrderSheetComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
