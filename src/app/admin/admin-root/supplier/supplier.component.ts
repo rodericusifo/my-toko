@@ -79,8 +79,7 @@ export class SupplierComponent implements OnInit {
               phoneNumber: Supplier.phoneNumber,
               email: Supplier.email,
               discount: Supplier.discount,
-              createdAt: Supplier.createdAt
-                .split('T')[0]
+              createdAt: Supplier.createdAt!.split('T')[0]
                 .split('-')
                 .reverse()
                 .join('-'),

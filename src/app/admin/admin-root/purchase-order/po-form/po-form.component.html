@@ -1,40 +1,164 @@
 <div class="card mt-2">
-    <div class="card-body">
-        <form>
-            <div class="row">
-                <div class="form-group col-6">
-                    <label for="example-text-input" class="form-control-label">PO Number</label>
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text" id="inputGroup-sizing-default">PO</span>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-                    </div>
-                </div>
-                <div class="form-group col-6">
-                    <label for="example-text-input" class="form-control-label">PO Date</label>
-                    <input class="form-control" type="date" value="2021-06-01" id="example-date-input">
-                </div>
+  <div class="card-body">
+    <form [formGroup]="createPOForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="example-text-input" class="form-control-label"
+            >PO Number</label
+          >
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default"
+                >PO</span
+              >
             </div>
-            <div class="row">
-                <div class="form-group col-6">
-                    <label for="example-text-input" class="form-control-label">Ship to</label>
-                    <input class="form-control" type="text" id="example-text-input" placeholder="Name">
-                    <input class="form-control" type="text" id="example-text-input" placeholder="Company Name">
-                    <input class="form-control" type="text" id="example-text-input" placeholder="Phone">
-                    <input class="form-control" type="text" id="example-text-input" placeholder="Email">
-                </div>
-                <div class="form-group col-6">
-                    <label for="example-text-input" class="form-control-label">Supplier</label>
-                    <select class="form-control" data-toggle="select" title="Simple select" data-placeholder="Select a state">
-                        <option>PT. Indofood</option>
-                        <option>PT. Wingsfood</option>
-                    </select>
-                </div>
-            </div>
-            <div>
-                <button class="btn btn-primary">Submit</button>
-            </div>
-        </form>
-    </div>
+            <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              pattern="^[0-9]+$"
+              formControlName="PONumber"
+              required
+            />
+          </div>
+          <small
+            *ngIf="
+              !createPOForm.get('PONumber')!.valid &&
+              createPOForm.get('PONumber')!.touched
+            "
+            class="help-block text-danger"
+            >PO Number is required and only contains numbers</small
+          >
+        </div>
+        <div class="form-group col-6">
+          <label for="example-text-input" class="form-control-label"
+            >PO Date</label
+          >
+          <input
+            class="form-control"
+            type="date"
+            id="example-date-input"
+            formControlName="PODate"
+            required
+          />
+          <small
+            *ngIf="
+              !createPOForm.get('PODate')!.valid &&
+              createPOForm.get('PODate')!.touched
+            "
+            class="help-block text-danger"
+            >PO Date is required</small
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-6" formGroupName="shipTo">
+          <label for="example-text-input" class="form-control-label"
+            >Ship to</label
+          >
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Name"
+            formControlName="name"
+            required
+          />
+          <small
+            *ngIf="
+              !createPOForm.get('shipTo.name')!.valid &&
+              createPOForm.get('shipTo.name')!.touched
+            "
+            class="help-block text-danger"
+            >PO Ship To Name is required</small
+          >
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Company Name"
+            formControlName="companyName"
+            required
+          />
+          <small
+            *ngIf="
+              !createPOForm.get('shipTo.companyName')!.valid &&
+              createPOForm.get('shipTo.companyName')!.touched
+            "
+            class="help-block text-danger"
+            >PO Ship To Company Name is required</small
+          >
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Phone"
+            formControlName="phoneNumber"
+            required
+          />
+          <small
+            *ngIf="
+              !createPOForm.get('shipTo.phoneNumber')!.valid &&
+              createPOForm.get('shipTo.phoneNumber')!.touched
+            "
+            class="help-block text-danger"
+            >PO Ship To Phone Number is required</small
+          >
+          <input
+            class="form-control"
+            type="text"
+            id="example-text-input"
+            placeholder="Email"
+            formControlName="email"
+            required
+            email
+          />
+          <small
+            *ngIf="
+              !createPOForm.get('shipTo.email')!.valid &&
+              createPOForm.get('shipTo.email')!.touched
+            "
+            class="help-block text-danger"
+            >PO Ship To Email is required</small
+          >
+        </div>
+        <div class="form-group col-6">
+          <label for="example-text-input" class="form-control-label"
+            >Supplier</label
+          >
+          <select
+            class="form-control"
+            data-toggle="select"
+            title="Simple select"
+            data-placeholder="Select a state"
+            formControlName="Supplier"
+            required
+          >
+            <option [ngValue]="null" disabled>--- Choose Supplier ---</option>
+            <option *ngFor="let supplier of suppliers" [ngValue]="supplier._id">
+              [{{ supplier.name }}] --- [{{ supplier.companyName }}]
+            </option>
+          </select>
+          <small
+            *ngIf="
+              !createPOForm.get('Supplier')!.valid &&
+              createPOForm.get('Supplier')!.touched
+            "
+            class="help-block text-danger"
+            >PO Supplier is required</small
+          >
+        </div>
+      </div>
+      <div>
+        <button
+          [disabled]="!createPOForm.valid"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

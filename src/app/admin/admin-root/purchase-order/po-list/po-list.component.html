@@ -1,25 +1,38 @@
 <div class="table-responsive mt-4">
-    <table class="table align-items-center">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col" class="sort text-white text-default" data-sort="no">No</th>
-                <th scope="col" class="sort text-white" data-sort="po">Purchase Order</th>
-                <th scope="col" class="sort text-white" data-sort="po-date">PO Date</th>
-            </tr>
-        </thead>
-        <tbody class="list">
-            <tr>
-                <td class="no">
-                    1
-                </td>
-                <td class="po">
-                    <a [routerLink]="'/admin/purchase-order/:purchaseOrderID'" routerLinkActive="active">PO 1</a>
-                </td>
-                <td class="po-date">
-                    05-06-2021
-                </td>
-            </tr>
-        </tbody>
-    </table>
+  <table class="table align-items-center">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" class="sort text-white text-default" data-sort="no">
+          No
+        </th>
+        <th scope="col" class="sort text-white" data-sort="po-number">
+          PO Number
+        </th>
+        <th scope="col" class="sort text-white" data-sort="po-date">PO Date</th>
+        <th scope="col" class="sort text-white" data-sort="createdAt">
+          Created At
+        </th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <tr *ngFor="let PO of POList; let i = index">
+        <td class="no">
+          {{ i + 1 }}
+        </td>
+        <td class="po-number">
+          <a
+            [routerLink]="'/admin/purchase-order/' + PO._id"
+            routerLinkActive="active"
+            >{{ PO.PONumber }}</a
+          >
+        </td>
+        <td class="po-date">
+          {{ PO.PODate }}
+        </td>
+        <td class="createdAt">
+          {{ PO.createdAt }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
-
