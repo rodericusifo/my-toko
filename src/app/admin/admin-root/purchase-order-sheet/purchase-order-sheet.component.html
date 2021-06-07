@@ -1,35 +1,39 @@
 <div class="container mt-3">
-  <div class="ml-3">
+  <div class="ml-3" *ngIf="isLoaded">
     <h1>Purchase Order</h1>
     <div class="row mt-3">
       <div class="col-6">
         <h3>PO Date</h3>
-        <p>04-06-2021</p>
+        <p>{{ PO.PODate }}</p>
       </div>
       <div class="col-6">
         <h3>PO Number</h3>
-        <p>PO 078</p>
+        <p>{{ PO.PONumber }}</p>
       </div>
     </div>
     <hr />
     <div class="row mt-3">
       <div class="col-6">
-        <h3>Vendor</h3>
-        <p>name</p>
-        <p>companyName</p>
-        <p>phoneNumber</p>
-        <p>email</p>
+        <h3>Supplier</h3>
+        <p>{{ PO.Supplier!.name! }}</p>
+        <p>{{ PO.Supplier!.companyName! }}</p>
+        <p>{{ PO.Supplier!.phoneNumber! }}</p>
+        <p>{{ PO.Supplier!.email! }}</p>
       </div>
       <div class="col-6">
         <h3>Ship to</h3>
-        <p>name</p>
-        <p>companyName</p>
-        <p>phoneNumber</p>
-        <p>email</p>
+        <p>{{ PO.shipTo!.name! }}</p>
+        <p>{{ PO.shipTo!.companyName! }}</p>
+        <p>{{ PO.shipTo!.phoneNumber! }}</p>
+        <p>{{ PO.shipTo!.email! }}</p>
       </div>
     </div>
-    <hr />
-    <app-po-sheet-form></app-po-sheet-form>
+    <hr *ngIf="PO.INVCreated === false" />
+    <app-po-sheet-form
+      (addPOProduct)="addPOProduct($event)"
+      [UOMList]="UOMList"
+      *ngIf="PO.INVCreated === false"
+    ></app-po-sheet-form>
     <hr />
     <div class="table-responsive mt-4">
       <table class="table align-items-center">
@@ -70,28 +74,33 @@
           </tr>
         </thead>
         <tbody class="list">
-          <tr>
-            <td class="Td no">1</td>
-            <td class="Td po-uom">Indomie Goreng - Box</td>
-            <td class="Td remaining text-right">3</td>
-            <td class="Td quantity text-right">3</td>
-            <td class="Td price text-right">Rp. 1000</td>
-            <td class="Td amount text-right">Rp. 3000</td>
+          <tr *ngFor="let POProduct of PO.POProducts; let i = index">
+            <td class="Td no">{{ i + 1 }}</td>
+            <td class="Td po-uom">
+              {{ POProduct.UOM.Product.name }} - {{ POProduct.UOM.name }}
+            </td>
+            <td class="Td remaining text-center">{{ POProduct.remaining }}</td>
+            <td class="Td quantity text-center">{{ POProduct.quantity }}</td>
+            <td class="Td price text-right">
+              Rp. {{ POProduct.UOM.purchasePrice }}
+            </td>
+            <td class="Td amount text-right">Rp. {{ POProduct.amount }}</td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="row justify-content-end mr-1">
       <p class="col-2 text-right font-weight-bold">Subtotal</p>
-      <p class="col-2 text-right">Rp 32.000</p>
+      <p class="col-2 text-right">Rp. {{ PO.subTotal }}</p>
     </div>
     <div class="row justify-content-end mr-1">
       <p class="col-2 text-right font-weight-bold">Discount</p>
-      <p class="col-2 text-right">10%</p>
+      <p class="col-2 text-right">{{ PO.Supplier!.discount }}%</p>
     </div>
     <div class="row justify-content-end mr-1">
       <p class="col-2 text-right font-weight-bold">Total</p>
-      <p class="col-2 text-right">Rp. 5.000.000.000</p>
+      <p class="col-2 text-right">Rp. {{ PO.total }}</p>
     </div>
   </div>
+  <app-page-admin-loader *ngIf="!isLoaded"></app-page-admin-loader>
 </div>

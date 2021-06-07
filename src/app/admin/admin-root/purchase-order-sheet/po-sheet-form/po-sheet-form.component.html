@@ -1,35 +1,55 @@
-<form class="row mt-3">
-    <div class="col-12 col-sm-6">
-        <select
-            class="form-control"
-            data-toggle="select"
-            title="Simple select"
-            data-live-search="true"
-            data-live-search-placeholder="Search ..."
-        >
-        <option [ngValue]="null" disabled>
-          --- Choose Product - UOM ---
-        </option>
-        <option>
-          Product - UOM
-        </option>
-        </select>
-        <!-- <small
-            class="help-block text-danger col-12 col-sm-12 offset-sm-12"
-            >Product UOM is required
-        </small> -->
+<form class="row mt-3" [formGroup]="addPOProductForm" (ngSubmit)="onSubmit()">
+  <div class="col-12 col-sm-6">
+    <select
+      class="form-control"
+      data-toggle="select"
+      title="Simple select"
+      data-live-search="true"
+      data-live-search-placeholder="Search ..."
+      formControlName="UOM"
+      required
+    >
+      <option [ngValue]="null" disabled>--- Choose Product - UOM ---</option>
+      <option *ngFor="let UOM of UOMList" [ngValue]="UOM._id">
+        {{ UOM.Product.name }} - {{ UOM.name }}
+      </option>
+    </select>
+    <small
+      *ngIf="
+        !addPOProductForm.get('UOM')!.valid &&
+        addPOProductForm.get('UOM')!.touched
+      "
+      class="help-block text-danger"
+      >Product - UOM is required
+    </small>
+  </div>
+  <div class="col-4">
+    <div class="input-group input-group">
+      <input
+        class="form-control"
+        type="text"
+        id="example-text-input"
+        placeholder="Quantity"
+        formControlName="quantity"
+        required
+      />
     </div>
-    <div class="col-4">
-      <div class="input-group input-group">
-        <input
-          class="form-control"
-          type="text"
-          id="example-text-input"
-          placeholder="Quantity"
-        />
-      </div>
-    </div>
-    <div class="col-2">
-      <button class="btn btn-success" type="submit">Add Product</button>
-    </div>
+    <small
+      *ngIf="
+        !addPOProductForm.get('quantity')!.valid &&
+        addPOProductForm.get('quantity')!.touched
+      "
+      class="help-block text-danger"
+      >Quantity is required
+    </small>
+  </div>
+  <div class="col-2">
+    <button
+      [disabled]="!addPOProductForm.valid"
+      class="btn btn-success"
+      type="submit"
+    >
+      Add Product
+    </button>
+  </div>
 </form>

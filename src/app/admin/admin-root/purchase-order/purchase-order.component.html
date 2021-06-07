@@ -1,5 +1,14 @@
 <div class="container mt-3">
-    <h1>Purchase Order</h1>
-    <app-po-form></app-po-form>
-    <app-po-list></app-po-list>
+  <h1 *ngIf="isLoaded">Purchase Order</h1>
+  <app-po-form
+    (createPO)="createPO($event)"
+    [suppliers]="suppliers"
+    *ngIf="isLoaded"
+  ></app-po-form>
+  <app-po-list [POList]="POList" *ngIf="isLoaded && !isError"></app-po-list>
+  <app-page-error
+    [errorMessage]="errorMessage"
+    *ngIf="isLoaded && isError"
+  ></app-page-error>
+  <app-page-admin-loader *ngIf="!isLoaded"></app-page-admin-loader>
 </div>
