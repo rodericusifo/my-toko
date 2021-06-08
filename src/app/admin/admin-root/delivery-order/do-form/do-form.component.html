@@ -1,0 +1,121 @@
+<div class="card mt-2">
+    <div class="card-body">
+      <form>
+        <div class="form-group row">
+            <label
+              for="example-text-input"
+              class="form-control-label col-12 col-sm-3 mt-2"
+              >PO Number - Product - UOM</label
+            >
+            <div class="input-group input-group col-12 col-sm-9">
+              <select
+                class="form-control"
+                data-toggle="select"
+                title="Simple select"
+                data-live-search="true"
+                data-live-search-placeholder="Search ..."
+                formControlName="ponumber-product-uom"
+                required
+              >
+                <option [ngValue]="null" disabled>
+                  --- Choose PO Number - Product - UOM ---
+                </option>
+                <option>
+                    12345
+                </option>
+              </select>
+            </div>
+            <!-- <small
+              *ngIf="
+                !createProductForm.get('Brand')!.valid &&
+                createProductForm.get('Brand')!.touched
+              "
+              class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+              >PO Number - Product - UOM is required</small
+            > -->
+        </div>
+        <div class="form-group row">
+            <label
+                for="example-text-input"
+                class="form-control-label col-12 col-sm-3 mt-2"
+                >DO Number</label
+            >
+            <div class="input-group input-group col-12 col-sm-9">
+                <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                    >DO</span
+                >
+                </div>
+                <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                pattern="^[0-9]+$"
+                formControlName="DONumber"
+                required
+                />
+            </div>
+            <!-- <small
+                *ngIf="
+                !createProductForm.get('DONumber')!.valid &&
+                createProductForm.get('DONumber')!.touched
+                "
+                class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+                >DO Number is required and only contains numbers</small
+            > -->
+        </div>
+        <div class="form-group row">
+            <label for="example-text-input" class="form-control-label col-12 col-sm-3 mt-2"
+              >DO Date</label
+            >
+            <div class="input-group input-group col-12 col-sm-9">
+                <input
+                class="form-control"
+                type="date"
+                id="example-date-input"
+                formControlName="DODate"
+                required
+                />
+            </div>
+            <!-- <small
+              *ngIf="
+                !createPOForm.get('DODate')!.valid &&
+                createPOForm.get('DODate')!.touched
+              "
+              class="help-block text-danger"
+              >DO Date is required</small
+            > -->
+        </div>
+        <div class="form-group row">
+            <label
+              for="example-text-input"
+              class="form-control-label col-12 col-sm-3 mt-2"
+              >Quantity</label
+            >
+            <div class="input-group input-group col-12 col-sm-9">
+                <input
+                    class="form-control"
+                    type="text"
+                    id="example-text-input"
+                    placeholder="Quantity"
+                    formControlName="quantity"
+                    required
+                />
+            </div>
+            <!-- <small
+              *ngIf="
+                !createBrandForm.get('name')!.valid &&
+                createBrandForm.get('name')!.touched
+              "
+              class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+              >Brand name is required</small
+            > -->
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+</div>
+

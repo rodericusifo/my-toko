@@ -6,6 +6,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./delivery-order.component.css']
 })
 export class DeliveryOrderComponent implements OnInit {
+  isLoaded!: boolean;
+  isError!: boolean;
+  errorMessage!: string;
 
   constructor() { }
 
