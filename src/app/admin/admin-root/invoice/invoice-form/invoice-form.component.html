@@ -1,0 +1,164 @@
+<div class="card mt-2">
+    <div class="card-body">
+      <form >
+        <div class="row">
+          <div class="form-group col-6">
+            <label for="example-text-input" class="form-control-label"
+              >INV Number</label
+            >
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-default"
+                  >INV</span
+                >
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                pattern="^[0-9]+$"
+                formControlName="INVNumber"
+                required
+              />
+            </div>
+            <!-- <small
+              *ngIf="
+                !createInvoiceForm.get('INVNumber')!.valid &&
+                createInvoiceForm.get('INVNumber')!.touched
+              "
+              class="help-block text-danger"
+              >Invoice Number is required and only contains numbers</small
+            > -->
+          </div>
+          <div class="form-group col-6">
+            <label for="example-text-input" class="form-control-label"
+              >INV Date</label
+            >
+            <input
+              class="form-control"
+              type="date"
+              id="example-date-input"
+              formControlName="INVDate"
+              required
+            />
+            <!-- <small
+              *ngIf="
+                !createInvoiceForm.get('INVDate')!.valid &&
+                createInvoiceForm.get('INVDate')!.touched
+              "
+              class="help-block text-danger"
+              >Invoice Date is required</small
+            > -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-6" formGroupName="billTo">
+            <label for="example-text-input" class="form-control-label"
+              >Bill to</label
+            >
+            <input
+              class="form-control"
+              type="text"
+              id="example-text-input"
+              placeholder="Name"
+              formControlName="name"
+              required
+            />
+            <!-- <small
+              *ngIf="
+                !createPOForm.get('billTo.name')!.valid &&
+                createPOForm.get('billTo.name')!.touched
+              "
+              class="help-block text-danger"
+              >PO Ship To Name is required</small
+            > -->
+            <input
+              class="form-control"
+              type="text"
+              id="example-text-input"
+              placeholder="Company Name"
+              formControlName="companyName"
+              required
+            />
+            <!-- <small
+              *ngIf="
+                !createPOForm.get('billTo.companyName')!.valid &&
+                createPOForm.get('billTo.companyName')!.touched
+              "
+              class="help-block text-danger"
+              >PO Ship To Company Name is required</small
+            > -->
+            <input
+              class="form-control"
+              type="text"
+              id="example-text-input"
+              placeholder="Phone"
+              formControlName="phoneNumber"
+              required
+            />
+            <!-- <small
+              *ngIf="
+                !createPOForm.get('billTo.phoneNumber')!.valid &&
+                createPOForm.get('billTo.phoneNumber')!.touched
+              "
+              class="help-block text-danger"
+              >PO Ship To Phone Number is required</small
+            > -->
+            <input
+              class="form-control"
+              type="text"
+              id="example-text-input"
+              placeholder="Email"
+              formControlName="email"
+              required
+              email
+            />
+            <!-- <small
+              *ngIf="
+                !createPOForm.get('billTo.email')!.valid &&
+                createPOForm.get('billTo.email')!.touched
+              "
+              class="help-block text-danger"
+              >PO Ship To Email is required</small
+            > -->
+          </div>
+          <div class="form-group col-6">
+            <label for="example-text-input" class="form-control-label"
+              >PO Number</label
+            >
+            <select
+              class="form-control"
+              data-toggle="select"
+              title="Simple select"
+              data-placeholder="Select a state"
+              formControlName="PONumber"
+              required
+            >
+              <option>--- Choose PO Number ---</option>
+              <option >
+                  PO 123
+              </option>
+            </select>
+            <!-- <small
+              *ngIf="
+                !createPOForm.get('Supplier')!.valid &&
+                createPOForm.get('Supplier')!.touched
+              "
+              class="help-block text-danger"
+              >PO Supplier is required</small
+            > -->
+          </div>
+        </div>
+        <div>
+          <button
+            type="submit"
+            class="btn btn-primary"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
