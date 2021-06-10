@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { IDO } from 'src/app/interfaces/DO-interface';
 
 @Component({
   selector: 'app-do-list',
   templateUrl: './do-list.component.html',
-  styleUrls: ['./do-list.component.css']
+  styleUrls: ['./do-list.component.css'],
 })
 export class DoListComponent implements OnInit {
+  @Input() DOList!: IDO[];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }
