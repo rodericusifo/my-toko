@@ -38,7 +38,6 @@ import { PurchaseOrderSheetComponent } from './admin-root/purchase-order-sheet/p
 import { PoSheetFormComponent } from './admin-root/purchase-order-sheet/po-sheet-form/po-sheet-form.component';
 import { DoFormComponent } from './admin-root/delivery-order/do-form/do-form.component';
 import { DoListComponent } from './admin-root/delivery-order/do-list/do-list.component';
-import { InvoiceSheetComponent } from './admin-root/invoice-sheet/invoice-sheet.component';
 import { InvoiceFormComponent } from './admin-root/invoice/invoice-form/invoice-form.component';
 import { InvoiceListComponent } from './admin-root/invoice/invoice-list/invoice-list.component';
 
@@ -78,7 +77,6 @@ import { InvoiceListComponent } from './admin-root/invoice/invoice-list/invoice-
     PoSheetFormComponent,
     DoFormComponent,
     DoListComponent,
-    InvoiceSheetComponent,
     InvoiceFormComponent,
     InvoiceListComponent,
   ],
