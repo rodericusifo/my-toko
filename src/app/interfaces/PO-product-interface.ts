@@ -3,15 +3,19 @@ interface IPOProduct {
   UOM: {
     _id: string;
     name: string;
-    purchasePrice: number;
+    purchasePrice?: number;
     Product: {
       _id: string;
       name: string;
     };
   };
-  remaining: number;
-  quantity: number;
-  amount: number;
+  PO?: {
+    _id: string;
+    PONumber: string;
+  };
+  remaining?: number;
+  quantity?: number;
+  amount?: number;
 }
 
 export { IPOProduct };
