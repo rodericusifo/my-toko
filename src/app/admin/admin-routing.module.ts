@@ -18,7 +18,6 @@ import { OrderReceiptComponent } from './admin-root/order-receipt/order-receipt.
 import { OrderComponent } from './admin-root/order/order.component';
 import { UomComponent } from './admin-root/uom/uom.component';
 import { SupplierComponent } from './admin-root/supplier/supplier.component';
-import { InvoiceSheetComponent } from './admin-root/invoice-sheet/invoice-sheet.component';
 
 const routes: Routes = [
   {
@@ -43,7 +42,6 @@ const routes: Routes = [
       },
       { path: 'delivery-order', component: DeliveryOrderComponent },
       { path: 'invoice', component: InvoiceComponent },
-      { path: 'invoice/:invoiceID', component: InvoiceSheetComponent },
       { path: 'payable', component: PayableComponent },
       { path: 'receivable', component: ReceivableComponent },
       { path: 'order', component: OrderComponent },

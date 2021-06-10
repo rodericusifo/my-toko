@@ -1,7 +1,5 @@
 <div class="container mt-3">
-    <div class="ml-4">
-        <h1 *ngIf="isLoaded">Supplier</h1>
-    </div>
+    <h1 *ngIf="isLoaded">Supplier</h1>
     <app-supplier-form (createSupplier)="createSupplier($event)" *ngIf="isLoaded"></app-supplier-form>
     <app-supplier-list [suppliers]="suppliers" *ngIf="isLoaded && !isError"></app-supplier-list>
     <app-page-error

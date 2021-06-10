@@ -1,6 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&family=Kaushan+Script&family=Montserrat:wght@400;800&family=Open+Sans&family=Pacifico&family=Raleway&display=swap');
+
 .Navbar-Img {
     max-height: 3rem !important;
 }
 .Username {
     text-decoration: underline;
+}
+
+.Title-toko {
+    color: white !important;
+    font-family: 'Kaushan Script', cursives;
+    font-size: 25px;
 }
