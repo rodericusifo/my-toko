@@ -1,28 +1,40 @@
 <div class="table-responsive mt-4">
-    <table class="table align-items-center">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col" class="sort text-white text-default" data-sort="no">
-            No
-          </th>
-          <th scope="col" class="sort text-white" data-sort="ponumber-product-uom">PO Number - Product - UOM</th>
-          <th scope="col" class="sort text-white" data-sort="do-number">DO Number</th>
-          <th scope="col" class="sort text-white" data-sort="do-date">DO Date</th>
-          <th scope="col" class="sort text-white" data-sort="quantity">Quantity</th>
-          <th scope="col" class="sort text-white" data-sort="createdAt">
-            Created At
-          </th>
-        </tr>
-      </thead>
-      <tbody class="list">
-        <tr>
-          <td class="no">1</td>
-          <td class="ponumber-product-uom">PO123-PRD123-543</td>
-          <td class="do-number">DO123</td>
-          <td class="do-date">10-06-2021</td>
-          <td class="quantity">100</td>
-          <td class="createdAt"></td>
-        </tr>
-      </tbody>
-    </table>
+  <table class="table align-items-center">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" class="sort text-white text-default" data-sort="no">
+          No
+        </th>
+        <th scope="col" class="sort text-white" data-sort="do-number">
+          DO Number
+        </th>
+        <th scope="col" class="sort text-white" data-sort="do-date">DO Date</th>
+        <th scope="col" class="sort text-white" data-sort="ponumber">
+          PO Number
+        </th>
+        <th scope="col" class="sort text-white" data-sort="product-uom">
+          Product - UOM
+        </th>
+        <th scope="col" class="sort text-white" data-sort="quantity">
+          Quantity
+        </th>
+        <th scope="col" class="sort text-white" data-sort="createdAt">
+          Created At
+        </th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <tr *ngFor="let DO of DOList; let i = index">
+        <td class="no">{{ i + 1 }}</td>
+        <td class="do-number">{{ DO.DONumber }}</td>
+        <td class="do-date">{{ DO.DODate }}</td>
+        <td class="ponumber">{{ DO.POProduct.PO!.PONumber }}</td>
+        <td class="product-uom">
+          {{ DO.POProduct.UOM.Product.name }} - {{ DO.POProduct.UOM.name }}
+        </td>
+        <td class="quantity">{{ DO.quantity }}</td>
+        <td class="createdAt">{{ DO.createdAt }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

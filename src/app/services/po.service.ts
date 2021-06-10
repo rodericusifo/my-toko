@@ -103,6 +103,23 @@ export class POService {
       .pipe(catchError(this.handlingError));
   }
 
+  public getPOProductList(): Observable<HttpResponse<IResponse>> {
+    return this.http
+      .get<IResponse>(
+        `${environment.API_URL}PO/list-product?userID=${
+          this.authInfoService.getDecodedToken().id
+        }`,
+        {
+          headers: new HttpHeaders({
+            Authorization: this.authInfoService.getAuth()!,
+          }),
+          responseType: 'json',
+          observe: 'response',
+        }
+      )
+      .pipe(catchError(this.handlingError));
+  }
+
   private handlingError(err: HttpErrorResponse) {
     return throwError(err);
   }

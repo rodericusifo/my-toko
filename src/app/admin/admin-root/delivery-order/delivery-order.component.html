@@ -1,7 +1,14 @@
 <div class="container mt-3">
-    <h2 *ngIf="isLoaded">Delivery Order</h2>
-    <app-do-form></app-do-form>
-    <app-do-list></app-do-list>
-    <!-- <app-page-error></app-page-error>
-    <app-page-admin-loader></app-page-admin-loader> -->
+  <h2 *ngIf="isLoaded">Delivery Order</h2>
+  <app-do-form
+    (createDO)="createDO($event)"
+    [POProducts]="POProducts"
+    *ngIf="isLoaded"
+  ></app-do-form>
+  <app-do-list [DOList]="DOList" *ngIf="isLoaded && !isError"></app-do-list>
+  <app-page-error
+    [errorMessage]="errorMessage"
+    *ngIf="isLoaded && isError"
+  ></app-page-error>
+  <app-page-admin-loader *ngIf="!isLoaded"></app-page-admin-loader>
 </div>
