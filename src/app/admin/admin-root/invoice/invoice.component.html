@@ -1,5 +1,18 @@
 <div class="container mt-3">
-    <h1>Invoice</h1>
-    <app-invoice-form></app-invoice-form>
-    <app-invoice-list></app-invoice-list>
+  <h1 *ngIf="isLoaded">Invoice</h1>
+  <app-invoice-form
+    (createInvoice)="createInvoice($event)"
+    [POList]="POList"
+    *ngIf="isLoaded"
+  ></app-invoice-form>
+  <app-invoice-list
+    (editInvoiceStatus)="editInvoiceStatus($event)"
+    [invoices]="invoices"
+    *ngIf="isLoaded && !isError"
+  ></app-invoice-list>
+  <app-page-error
+    [errorMessage]="errorMessage"
+    *ngIf="isLoaded && isError"
+  ></app-page-error>
+  <app-page-admin-loader *ngIf="!isLoaded"></app-page-admin-loader>
 </div>

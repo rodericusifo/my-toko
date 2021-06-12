@@ -1,43 +1,50 @@
 <div class="table-responsive mt-4">
-    <table class="table align-items-center">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col" class="sort text-white text-default" data-sort="no">
-            No
-          </th>
-          <th scope="col" class="sort text-white" data-sort="inv-number">
-            INV Number
-          </th>
-          <th scope="col" class="sort text-white" data-sort="inv-date">INV Date</th>
-          <th scope="col" class="sort text-white" data-sort="createdAt">
-            Created At
-          </th>
-          <th scope="col" class="sort text-white" data-sort="payment">ACTION</th>
-        </tr>
-      </thead>
-      <tbody class="list">
-        <tr>
-          <td class="no">
-            1
-          </td>
-          <td class="inv-number">
-            <a class="href">INV1</a>
-          </td>
-          <td class="inv-date">
-            21-05-2021
-          </td>
-          <td class="createdAt">
-            21-05-2021
-          </td>
-          <td class="action">
-            <button
-              class="btn btn-success"
-            >
-              Pay
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-
+  <table class="table align-items-center">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" class="sort text-white text-default" data-sort="no">
+          No
+        </th>
+        <th scope="col" class="sort text-white" data-sort="inv-number">
+          INV Number
+        </th>
+        <th scope="col" class="sort text-white" data-sort="inv-date">
+          INV Date
+        </th>
+        <th scope="col" class="sort text-white" data-sort="po-number">
+          PO Number
+        </th>
+        <th scope="col" class="sort text-white" data-sort="status">Status</th>
+        <th scope="col" class="sort text-white" data-sort="payment">ACTION</th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <tr *ngFor="let invoice of invoices; let i = index">
+        <td class="no">
+          {{ i + 1 }}
+        </td>
+        <td class="inv-number">
+          {{ invoice.INVNumber }}
+        </td>
+        <td class="inv-date">
+          {{ invoice.INVDate }}
+        </td>
+        <td class="po-number">
+          {{ invoice.PONumber }}
+        </td>
+        <td class="status">
+          {{ invoice.status }}
+        </td>
+        <td class="action">
+          <button
+            class="btn btn-success"
+            *ngIf="invoice.status === 'PENDING'"
+            (click)="pay(invoice._id)"
+          >
+            Pay
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

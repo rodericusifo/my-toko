@@ -1,94 +1,94 @@
 <div class="card mt-2">
-    <div class="card-body">
-      <form >
-        <div class="row">
-          <div class="form-group col-6">
-            <label for="example-text-input" class="form-control-label"
-              >INV Number</label
-            >
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroup-sizing-default"
-                  >INV</span
-                >
-              </div>
-              <input
-                type="text"
-                class="form-control"
-                aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-default"
-                pattern="^[0-9]+$"
-                formControlName="INVNumber"
-                required
-              />
+  <div class="card-body">
+    <form [formGroup]="createInvoiceForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="example-text-input" class="form-control-label"
+            >INV Number</label
+          >
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default"
+                >INV</span
+              >
             </div>
-            <!-- <small
-              *ngIf="
-                !createInvoiceForm.get('INVNumber')!.valid &&
-                createInvoiceForm.get('INVNumber')!.touched
-              "
-              class="help-block text-danger"
-              >Invoice Number is required and only contains numbers</small
-            > -->
-          </div>
-          <div class="form-group col-6">
-            <label for="example-text-input" class="form-control-label"
-              >INV Date</label
-            >
             <input
+              type="text"
               class="form-control"
-              type="date"
-              id="example-date-input"
-              formControlName="INVDate"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              pattern="^[0-9]+$"
+              formControlName="INVNumber"
               required
             />
-            <!-- <small
-              *ngIf="
-                !createInvoiceForm.get('INVDate')!.valid &&
-                createInvoiceForm.get('INVDate')!.touched
-              "
-              class="help-block text-danger"
-              >Invoice Date is required</small
-            > -->
           </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-6">
-            <label for="example-text-input" class="form-control-label"
-              >PO Number</label
-            >
-            <select
-              class="form-control"
-              data-toggle="select"
-              title="Simple select"
-              data-placeholder="Select a state"
-              formControlName="PONumber"
-              required
-            >
-              <option>--- Choose PO Number ---</option>
-              <option >
-                  PO 123
-              </option>
-            </select>
-            <!-- <small
-              *ngIf="
-                !createPOForm.get('Supplier')!.valid &&
-                createPOForm.get('Supplier')!.touched
-              "
-              class="help-block text-danger"
-              >PO Supplier is required</small
-            > -->
-          </div>
-        </div>
-        <div>
-          <button
-            type="submit"
-            class="btn btn-primary"
+          <small
+            *ngIf="
+              !createInvoiceForm.get('INVNumber')!.valid &&
+              createInvoiceForm.get('INVNumber')!.touched
+            "
+            class="help-block text-danger"
+            >Invoice Number is required and only contains numbers</small
           >
-            Submit
-          </button>
         </div>
-      </form>
-    </div>
+        <div class="form-group col-6">
+          <label for="example-text-input" class="form-control-label"
+            >INV Date</label
+          >
+          <input
+            class="form-control"
+            type="date"
+            id="example-date-input"
+            formControlName="INVDate"
+            required
+          />
+          <small
+            *ngIf="
+              !createInvoiceForm.get('INVDate')!.valid &&
+              createInvoiceForm.get('INVDate')!.touched
+            "
+            class="help-block text-danger"
+            >Invoice Date is required</small
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="example-text-input" class="form-control-label"
+            >PO Number</label
+          >
+          <select
+            class="form-control"
+            data-toggle="select"
+            title="Simple select"
+            data-placeholder="Select a state"
+            formControlName="POID"
+            required
+          >
+            <option disabled [ngValue]="null">--- Choose PO Number ---</option>
+            <option *ngFor="let PO of POList" [hidden]="PO.INVCreated === true" [ngValue]="PO._id">
+              {{ PO.PONumber }}
+            </option>
+          </select>
+          <small
+            *ngIf="
+              !createInvoiceForm.get('POID')!.valid &&
+              createInvoiceForm.get('POID')!.touched
+            "
+            class="help-block text-danger"
+            >PO Number is required</small
+          >
+        </div>
+      </div>
+      <div>
+        <button
+          [disabled]="!createInvoiceForm.valid"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
   </div>
-
+</div>

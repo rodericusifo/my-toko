@@ -17,6 +17,7 @@ interface IPO {
   INVCreated?: boolean;
   Supplier?: ISupplier;
   createdAt?: string;
+  status?: string;
 }
 
 export { IPO };
