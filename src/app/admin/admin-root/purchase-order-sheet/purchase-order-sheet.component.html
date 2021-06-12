@@ -28,11 +28,11 @@
         <p>{{ PO.shipTo!.email! }}</p>
       </div>
     </div>
-    <hr *ngIf="PO.INVCreated === false" />
+    <hr *ngIf="!(PO.status === 'PAID')" />
     <app-po-sheet-form
       (addPOProduct)="addPOProduct($event)"
       [UOMList]="UOMList"
-      *ngIf="PO.INVCreated === false"
+      *ngIf="!(PO.status === 'PAID')"
     ></app-po-sheet-form>
     <hr />
     <div class="table-responsive mt-4">
