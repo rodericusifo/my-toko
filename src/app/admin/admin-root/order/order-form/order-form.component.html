@@ -1,0 +1,121 @@
+<div class="card mt-2">
+  <div class="card-body">
+    <form>
+      <div class="form-group row">
+        <label
+          for="example-text-input"
+          class="form-control-label col-12 col-sm-3 mt-2"
+          >Order Number</label
+        >
+        <div class="input-group input-group col-12 col-sm-9">
+          <input
+              type="text"
+              class="form-control"
+              aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-default"
+              pattern="^[0-9]+$"
+              formControlName="OrderNumber"
+              placeholder="Order Number"
+              required
+            />
+        </div>
+        <!-- <small
+          *ngIf="
+            !createOrderForm.get('OrderNumber')!.valid &&
+            createOrderForm.get('OrderNumber')!.touched
+          "
+          class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+          >Order OrderNumber is required</small
+        > -->
+      </div>
+      <div class="form-group row">
+          <label
+          for="example-text-input"
+          class="form-control-label col-12 col-sm-3 mt-2"
+          >Order Date</label
+        >
+        <div class="input-group input-group col-12 col-sm-9">
+          <input
+            class="form-control"
+            type="date"
+            id="example-date-input"
+            formControlName="OrderDate"
+            required
+          />
+        </div>
+        <!-- <small
+          *ngIf="
+            !createOrderForm.get('OrderDate')!.valid &&
+            createOrderForm.get('OrderDate')!.touched
+          "
+          class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+          >Order Date is required</small
+        > -->
+      </div>
+      <div class="form-group row">
+          <label
+            for="example-text-input"
+            class="form-control-label col-12 col-sm-3 mt-2"
+            >Customer Name</label
+          >
+          <div class="input-group input-group col-12 col-sm-9">
+            <input
+                type="text"
+                class="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default"
+                pattern="^[0-9]+$"
+                placeholder="Custoemr Name"
+                formControlName="CustomerName"
+                required
+              />
+          </div>
+          <!-- <small
+            *ngIf="
+              !createOrderForm.get('CustomerName')!.valid &&
+              createOrderForm.get('CustomerName')!.touched
+            "
+            class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+            >Customer Name is required</small
+          > -->
+        </div>
+      <div class="form-group row">
+        <label
+          for="example-text-input"
+          class="form-control-label col-12 col-sm-3 mt-2"
+          >Using Tax</label
+        >
+        <div class="input-group input-group col-12 col-sm-9">
+          <select
+            class="form-control"
+            data-toggle="select"
+            title="Simple select"
+            data-live-search="true"
+            data-live-search-placeholder="Search ..."
+            formControlName="UsingTax"
+            required
+          >
+            <option>
+              --- Choose Using Tax ---
+            </option>
+            <option >
+              Yes
+            </option>
+          </select>
+        </div>
+        <!-- <small
+          *ngIf="
+            !createOrderForm.get('UsingTax')!.valid &&
+            createOrderForm.get('UsingTax')!.touched
+          "
+          class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+          >Using Tax is required</small
+        > -->
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+</div>
+

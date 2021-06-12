@@ -19,6 +19,12 @@
       class="help-block text-danger"
       >Please Fiil a Valid Email</small
     >
+    <div>
+      <a  class="href"
+          [routerLink]="'/auth/login'"
+          routerLinkActive="active">Back to Login
+      </a>
+    </div>
   </div>
   <button [disabled]="!resetRequestPasswordForm.valid" type="submit" class="btn btn-lg btn-primary col-12 col-md-12 Button">
     Request Reset Password

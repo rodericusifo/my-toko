@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500&family=Kaushan+Script&family=Montserrat:wght@400;800&family=Open+Sans&family=Pacifico&family=Raleway&display=swap');
-
 .BrandLogo {
   font-size: 35px !important;
-  font-family: 'Kaushan Script', cursives;
+  font-family: 'Kaushan Script', cursives !important;
 }
 .Logo {
   margin-top: 20px !important;

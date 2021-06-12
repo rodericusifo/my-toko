@@ -14,10 +14,10 @@ import { DeliveryOrderComponent } from './admin-root/delivery-order/delivery-ord
 import { InvoiceComponent } from './admin-root/invoice/invoice.component';
 import { PayableComponent } from './admin-root/payable/payable.component';
 import { ReceivableComponent } from './admin-root/receivable/receivable.component';
-import { OrderReceiptComponent } from './admin-root/order-receipt/order-receipt.component';
 import { OrderComponent } from './admin-root/order/order.component';
 import { UomComponent } from './admin-root/uom/uom.component';
 import { SupplierComponent } from './admin-root/supplier/supplier.component';
+import { OrderSheetComponent } from './admin-root/order-sheet/order-sheet.component';
 
 const routes: Routes = [
   {
@@ -45,7 +45,7 @@ const routes: Routes = [
       { path: 'payable', component: PayableComponent },
       { path: 'receivable', component: ReceivableComponent },
       { path: 'order', component: OrderComponent },
-      { path: 'order-receipt', component: OrderReceiptComponent },
+      { path: 'order/:orderID', component: OrderSheetComponent },
       { path: 'uom', component: UomComponent },
     ],
   },

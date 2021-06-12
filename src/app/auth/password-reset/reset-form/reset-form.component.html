@@ -17,6 +17,12 @@
           class="help-block text-danger"
           >Password Must be 6-10 character</small
         >
+        <div>
+          <a  class="href"
+              [routerLink]="'/auth/login'"
+              routerLinkActive="active">Back to Login
+          </a>
+        </div>
       </div>
     <button
       [disabled]="!resetPasswordForm.valid"
