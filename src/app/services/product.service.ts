@@ -41,16 +41,22 @@ export class ProductService {
     name: string;
     code: string;
     Brand: string;
+    image: File;
   }): Observable<HttpResponse<IResponse>> {
+    let formData: any = new FormData();
+    formData.append('name', product.name);
+    formData.append('code', product.code);
+    formData.append('Brand', product.Brand);
+    formData.append('image', product.image);
+
     return this.http
       .post<IResponse>(
         `${environment.API_URL}products/create?userID=${
           this.authInfoService.getDecodedToken().id
         }`,
-        product,
+        formData,
         {
           headers: new HttpHeaders({
-            'Content-Type': 'application/json',
             Authorization: this.authInfoService.getAuth()!,
           }),
           observe: 'response',
@@ -64,17 +70,22 @@ export class ProductService {
     product: {
       name: string;
       code: string;
+      image: File;
     }
   ): Observable<HttpResponse<IResponse>> {
+    let formData: any = new FormData();
+    formData.append('name', product.name);
+    formData.append('code', product.code);
+    formData.append('image', product.image);
+
     return this.http
       .put<IResponse>(
         `${environment.API_URL}products/${productID}/edit?userID=${
           this.authInfoService.getDecodedToken().id
         }`,
-        product,
+        formData,
         {
           headers: new HttpHeaders({
-            'Content-Type': 'application/json',
             Authorization: this.authInfoService.getAuth()!,
           }),
           observe: 'response',

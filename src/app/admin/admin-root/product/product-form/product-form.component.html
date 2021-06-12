@@ -73,9 +73,7 @@
             formControlName="Brand"
             required
           >
-            <option [ngValue]="null" disabled>
-              --- Choose Brand ---
-            </option>
+            <option [ngValue]="null" disabled>--- Choose Brand ---</option>
             <option *ngFor="let brand of brands" [ngValue]="brand._id">
               {{ brand.name }}
             </option>
@@ -103,15 +101,30 @@
               class="custom-file-input"
               id="customFileLang"
               lang="en"
+              (change)="uploadFile($event)"
             />
             <label class="custom-file-label" for="customFileLang"
               >Select file</label
             >
           </div>
         </div>
+        <small
+          *ngIf="
+            !createProductForm.get('image')!.valid &&
+            createProductForm.get('image')!.touched
+          "
+          class="help-block text-danger col-12 col-sm-9 offset-sm-3"
+          >Product image is required</small
+        >
       </div>
       <div>
-        <button [disabled]="!createProductForm.valid" type="submit" class="btn btn-primary">Create</button>
+        <button
+          [disabled]="!createProductForm.valid"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Create
+        </button>
       </div>
     </form>
   </div>
