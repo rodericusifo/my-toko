@@ -16,7 +16,6 @@ import { InvoiceComponent } from './admin-root/invoice/invoice.component';
 import { PayableComponent } from './admin-root/payable/payable.component';
 import { ReceivableComponent } from './admin-root/receivable/receivable.component';
 import { OrderComponent } from './admin-root/order/order.component';
-import { OrderReceiptComponent } from './admin-root/order-receipt/order-receipt.component';
 import { JumbotronComponent } from './admin-root/home/jumbotron/jumbotron.component';
 import { CardComponent } from './admin-root/home/card/card.component';
 import { UserFormComponent } from './admin-root/user/user-form/user-form.component';
@@ -40,6 +39,9 @@ import { DoFormComponent } from './admin-root/delivery-order/do-form/do-form.com
 import { DoListComponent } from './admin-root/delivery-order/do-list/do-list.component';
 import { InvoiceFormComponent } from './admin-root/invoice/invoice-form/invoice-form.component';
 import { InvoiceListComponent } from './admin-root/invoice/invoice-list/invoice-list.component';
+import { OrderFormComponent } from './admin-root/order/order-form/order-form.component';
+import { OrderListComponent } from './admin-root/order/order-list/order-list.component';
+import { OrderSheetComponent } from './admin-root/order-sheet/order-sheet.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,6 @@ import { InvoiceListComponent } from './admin-root/invoice/invoice-list/invoice-
     PayableComponent,
     ReceivableComponent,
     OrderComponent,
-    OrderReceiptComponent,
     JumbotronComponent,
     CardComponent,
     UserFormComponent,
@@ -79,6 +80,9 @@ import { InvoiceListComponent } from './admin-root/invoice/invoice-list/invoice-
     DoListComponent,
     InvoiceFormComponent,
     InvoiceListComponent,
+    OrderFormComponent,
+    OrderListComponent,
+    OrderSheetComponent,
   ],
   imports: [
     CommonModule,
