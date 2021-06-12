@@ -102,11 +102,20 @@
                   class="custom-file-input"
                   id="customFileLang"
                   lang="en"
+                  (change)="uploadFile($event)"
                 />
                 <label class="custom-file-label" for="customFileLang"
                   >Select file</label
                 >
               </div>
+              <small
+                *ngIf="
+                  !editProductForm.get('image')!.valid &&
+                  editProductForm.get('image')!.touched
+                "
+                class="help-block text-danger"
+                >Product image is required</small
+              >
             </div>
             <div>
               <button

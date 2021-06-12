@@ -13,6 +13,7 @@ export class ProductListComponent implements OnInit {
     productID: string;
     name: string;
     code: string;
+    image: File;
   }>;
   editProductForm!: FormGroup;
 
@@ -21,6 +22,7 @@ export class ProductListComponent implements OnInit {
       productID: string;
       name: string;
       code: string;
+      image: File;
     }>();
   }
 
@@ -32,6 +34,7 @@ export class ProductListComponent implements OnInit {
     this.editProductForm = this.fb.group({
       name: [null, [Validators.required]],
       code: [null, [Validators.required, Validators.pattern('^[0-9]+$')]],
+      image: [null, [Validators.required]],
     });
   }
 
@@ -39,5 +42,13 @@ export class ProductListComponent implements OnInit {
     this.editProductForm.value.productID = productID;
     this.editProductForm.value.code = `PRD${this.editProductForm.value.code}`;
     this.editProduct.emit(this.editProductForm.value);
+  }
+
+  uploadFile(event: any) {
+    const file = (event.target as HTMLInputElement).files![0];
+    this.editProductForm.patchValue({
+      image: file,
+    });
+    this.editProductForm.get('image')!.updateValueAndValidity();
   }
 }
