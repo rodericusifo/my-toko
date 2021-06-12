@@ -34,7 +34,7 @@ export class ProductListComponent implements OnInit {
     this.editProductForm = this.fb.group({
       name: [null, [Validators.required]],
       code: [null, [Validators.required, Validators.pattern('^[0-9]+$')]],
-      image: [null, [Validators.required]],
+      image: [null],
     });
   }
 

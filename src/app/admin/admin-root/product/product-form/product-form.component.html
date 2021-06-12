@@ -108,14 +108,6 @@
             >
           </div>
         </div>
-        <small
-          *ngIf="
-            !createProductForm.get('image')!.valid &&
-            createProductForm.get('image')!.touched
-          "
-          class="help-block text-danger col-12 col-sm-9 offset-sm-3"
-          >Product image is required</small
-        >
       </div>
       <div>
         <button
