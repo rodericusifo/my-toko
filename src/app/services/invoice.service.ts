@@ -14,16 +14,16 @@ import { AuthInfoService } from './auth-info.service';
 @Injectable({
   providedIn: 'root',
 })
-export class ProductService {
+export class InvoiceService {
   constructor(
     private http: HttpClient,
     private authInfoService: AuthInfoService
   ) {}
 
-  public getProductList(): Observable<HttpResponse<IResponse>> {
+  public getInvoiceList(): Observable<HttpResponse<IResponse>> {
     return this.http
       .get<IResponse>(
-        `${environment.API_URL}products/list?userID=${
+        `${environment.API_URL}invoices/list?userID=${
           this.authInfoService.getDecodedToken().id
         }`,
         {
@@ -37,26 +37,20 @@ export class ProductService {
       .pipe(catchError(this.handlingError));
   }
 
-  public createProduct(product: {
-    name: string;
-    code: string;
-    Brand: string;
-    image: File;
+  public createInvoice(Invoice: {
+    INVNumber: string;
+    INVDate: string;
+    POID: string;
   }): Observable<HttpResponse<IResponse>> {
-    let formData: any = new FormData();
-    formData.append('name', product.name);
-    formData.append('code', product.code);
-    formData.append('Brand', product.Brand);
-    formData.append('image', product.image);
-
     return this.http
       .post<IResponse>(
-        `${environment.API_URL}products/create?userID=${
+        `${environment.API_URL}invoices/create?userID=${
           this.authInfoService.getDecodedToken().id
         }`,
-        formData,
+        Invoice,
         {
           headers: new HttpHeaders({
+            'Content-Type': 'application/json',
             Authorization: this.authInfoService.getAuth()!,
           }),
           observe: 'response',
@@ -65,27 +59,19 @@ export class ProductService {
       .pipe(catchError(this.handlingError));
   }
 
-  public editProduct(
-    productID: string,
-    product: {
-      name: string;
-      code: string;
-      image: File;
-    }
+  public editInvoiceStatus(
+    invoiceID: string,
+    status: string
   ): Observable<HttpResponse<IResponse>> {
-    let formData: any = new FormData();
-    formData.append('name', product.name);
-    formData.append('code', product.code);
-    formData.append('image', product.image);
-
     return this.http
       .put<IResponse>(
-        `${environment.API_URL}products/${productID}/edit?userID=${
+        `${environment.API_URL}invoices/${invoiceID}/edit-status?userID=${
           this.authInfoService.getDecodedToken().id
-        }`,
-        formData,
+        }&&status=${status}`,
+        {},
         {
           headers: new HttpHeaders({
+            'Content-Type': 'application/json',
             Authorization: this.authInfoService.getAuth()!,
           }),
           observe: 'response',

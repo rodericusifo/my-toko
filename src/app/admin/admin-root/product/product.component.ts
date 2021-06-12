@@ -114,7 +114,13 @@ export class ProductComponent implements OnInit {
     );
   }
 
-  createProduct(product: { name: string; code: string; Brand: string }) {
+  createProduct(product: {
+    name: string;
+    code: string;
+    Brand: string;
+    image: File;
+  }) {
+    console.log(product);
     this.createProductSubscription = this.productService
       .createProduct(product)
       .subscribe(
@@ -145,11 +151,17 @@ export class ProductComponent implements OnInit {
       );
   }
 
-  editProduct(product: { productID: string; name: string; code: string }) {
+  editProduct(product: {
+    productID: string;
+    name: string;
+    code: string;
+    image: File;
+  }) {
     this.editProductSubscription = this.productService
       .editProduct(product.productID, {
         name: product.name,
         code: product.code,
+        image: product.image,
       })
       .subscribe(
         (response) => {

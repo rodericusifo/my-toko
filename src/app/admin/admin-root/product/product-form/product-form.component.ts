@@ -12,6 +12,7 @@ export class ProductFormComponent implements OnInit {
     name: string;
     code: string;
     Brand: string;
+    image: File;
   }>;
   createProductForm!: FormGroup;
   @Input() brands!: IBrand[];
@@ -21,6 +22,7 @@ export class ProductFormComponent implements OnInit {
       name: string;
       code: string;
       Brand: string;
+      image: File;
     }>();
   }
 
@@ -33,11 +35,20 @@ export class ProductFormComponent implements OnInit {
       name: [null, [Validators.required]],
       code: [null, [Validators.required, Validators.pattern('^[0-9]+$')]],
       Brand: [null, [Validators.required]],
+      image: [null, [Validators.required]],
     });
   }
 
   onSubmit() {
     this.createProductForm.value.code = `PRD${this.createProductForm.value.code}`;
     this.createProduct.emit(this.createProductForm.value);
+  }
+
+  uploadFile(event: any) {
+    const file = (event.target as HTMLInputElement).files![0];
+    this.createProductForm.patchValue({
+      image: file,
+    });
+    this.createProductForm.get('image')!.updateValueAndValidity();
   }
 }
