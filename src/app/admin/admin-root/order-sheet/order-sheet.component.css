@@ -1,0 +1,16 @@
+.MainContent{
+    border-right: dotted rgb(174, 166, 166) !important;
+    width: 750px;
+}
+
+.AsideContent{
+    width: 300px;
+}
+
+.Th {
+    font-size: 13px !important;
+}
+
+.Td {
+    font-size: 13px !important;
+}

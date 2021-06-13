@@ -42,6 +42,7 @@ import { InvoiceListComponent } from './admin-root/invoice/invoice-list/invoice-
 import { OrderFormComponent } from './admin-root/order/order-form/order-form.component';
 import { OrderListComponent } from './admin-root/order/order-list/order-list.component';
 import { OrderSheetComponent } from './admin-root/order-sheet/order-sheet.component';
+import { OrderSheetCardComponent } from './admin-root/order-sheet/order-sheet-card/order-sheet-card.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { OrderSheetComponent } from './admin-root/order-sheet/order-sheet.compon
     OrderFormComponent,
     OrderListComponent,
     OrderSheetComponent,
+    OrderSheetCardComponent,
   ],
   imports: [
     CommonModule,
