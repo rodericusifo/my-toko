@@ -35,7 +35,7 @@ export class ProductFormComponent implements OnInit {
       name: [null, [Validators.required]],
       code: [null, [Validators.required, Validators.pattern('^[0-9]+$')]],
       Brand: [null, [Validators.required]],
-      image: [null, [Validators.required]],
+      image: [null],
     });
   }
 

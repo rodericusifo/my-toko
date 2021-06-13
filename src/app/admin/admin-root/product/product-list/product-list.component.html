@@ -108,14 +108,6 @@
                   >Select file</label
                 >
               </div>
-              <small
-                *ngIf="
-                  !editProductForm.get('image')!.valid &&
-                  editProductForm.get('image')!.touched
-                "
-                class="help-block text-danger"
-                >Product image is required</small
-              >
             </div>
             <div>
               <button

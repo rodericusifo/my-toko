@@ -19,6 +19,7 @@ interface IData {
   POProductList?: IPOProduct[];
   DOList?: IDO[];
   Invoices?: any;
+  APList?: any;
 }
 
 export { IData };

@@ -25,7 +25,7 @@
               [ngValue]="POProduct._id"
             >
               {{ POProduct.PO!.PONumber }} - {{ POProduct.UOM.Product.name }} -
-              {{ POProduct.UOM.name }}
+              {{ POProduct.UOM.name }} ({{ POProduct.remaining }})
             </option>
           </select>
         </div>
