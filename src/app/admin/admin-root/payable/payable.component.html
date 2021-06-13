@@ -1,46 +1,50 @@
 <div class="container mt-3">
-    <h2>Payable</h2>
-    <div class="table-responsive mt-4">
-      <table class="table align-items-center">
-        <thead class="thead-dark">
-          <tr>
-            <th scope="col" class="sort text-white text-default" data-sort="no">
-              No
-            </th>
-            <th scope="col" class="sort text-white" data-sort="inv-number">
-              INV Number
-            </th>
-            <th scope="col" class="sort text-white" data-sort="inv-date">INV Date</th>
-            <th scope="col" class="sort text-white text-right" data-sort="amount">
-              Amount
-            </th>
-          </tr>
-        </thead>
-        <tbody class="list">
-          <tr>
-            <td class="no">
-              1
-            </td>
-            <td class="inv-number">
-              <a class="href"
-              [routerLink]="'/admin/invoice/:invoiceID'"
-              routerLinkActive="active">INV1</a>
-            </td>
-            <td class="inv-date">
-              21-05-2021
-            </td>
-            <td class="amount text-right">
-              Rp 100.000
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="row justify-content-end mr-1">
-      <p class="col-2 text-right font-weight-bold">Total</p>
-      <p class="col-2 text-right">Rp. </p>
-    </div>
+  <h2 *ngIf="isLoaded && !isError">Payable</h2>
+  <div class="table-responsive mt-4" *ngIf="isLoaded && !isError">
+    <table class="table align-items-center">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" class="sort text-white text-default" data-sort="no">
+            No
+          </th>
+          <th scope="col" class="sort text-white" data-sort="inv-number">
+            INV Number
+          </th>
+          <th scope="col" class="sort text-white" data-sort="inv-date">
+            INV Date
+          </th>
+          <th scope="col" class="sort text-white" data-sort="status">Status</th>
+          <th scope="col" class="sort text-white" data-sort="supplier">
+            Supplier
+          </th>
+          <th scope="col" class="sort text-white text-right" data-sort="total">
+            Total
+          </th>
+        </tr>
+      </thead>
+      <tbody class="list">
+        <tr *ngFor="let AP of APList; let i = index">
+          <td class="no">{{ i + 1 }}</td>
+          <td class="inv-number">
+            {{ AP.INVNumber }}
+          </td>
+          <td class="inv-date">{{ AP.INVDate }}</td>
+          <td class="status">{{ AP.status }}</td>
+          <td class="supplier">
+            [{{ AP.Supplier.name }}] - [{{ AP.Supplier.companyName }}]
+          </td>
+          <td class="total text-right">Rp {{ AP.total }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row justify-content-end mr-1" *ngIf="isLoaded && !isError">
+    <p class="col-2 text-right font-weight-bold">Grand Total</p>
+    <p class="col-2 text-right">Rp. {{ grandTotal }}</p>
+  </div>
+  <app-page-error
+    [errorMessage]="errorMessage"
+    *ngIf="isLoaded && isError"
+  ></app-page-error>
+  <app-page-admin-loader *ngIf="!isLoaded"></app-page-admin-loader>
 </div>
-
-
-
