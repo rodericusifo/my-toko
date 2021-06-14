@@ -161,33 +161,40 @@ export class UomComponent implements OnInit {
   }
 
   editUOMStatus(UOM: { UOMID: string; status: string }) {
-    this.editUOMStatusSubscription = this.UOMService
-      .editUOMStatus(UOM.UOMID, UOM.status)
-      .subscribe(
-        (response) => {
-          console.log(response);
-          this.isError = false;
-          this.editUOMStatusSubscription.unsubscribe();
-          this.ngOnInit();
-          Swal.fire({
-            icon: 'success',
-            title: 'Edit Unit of Measure Status Success',
-            showConfirmButton: true,
-            timer: 3000,
-          });
-        },
-        (err) => {
-          console.log(err);
-          this.editUOMStatusSubscription.unsubscribe();
-          this.ngOnInit();
-          Swal.fire({
-            icon: 'error',
-            title: 'Edit Unit of Measure Status Failed',
-            text: err.error.message.split(':')[1].trim(),
-            showConfirmButton: true,
-            timer: 3000,
-          });
-        }
-      );
+    this.editUOMStatusSubscription = this.UOMService.editUOMStatus(
+      UOM.UOMID,
+      UOM.status
+    ).subscribe(
+      (response) => {
+        console.log(response);
+        this.isError = false;
+        this.editUOMStatusSubscription.unsubscribe();
+        this.ngOnInit();
+        Swal.fire({
+          icon: 'success',
+          title: 'Edit Unit of Measure Status Success',
+          showConfirmButton: true,
+          timer: 3000,
+        });
+      },
+      (err) => {
+        console.log(err);
+        this.editUOMStatusSubscription.unsubscribe();
+        this.ngOnInit();
+        Swal.fire({
+          icon: 'error',
+          title: 'Edit Unit of Measure Status Failed',
+          text: err.error.message.split(':')[1].trim(),
+          showConfirmButton: true,
+          timer: 3000,
+        });
+      }
+    );
+  }
+
+  runOutStock() {
+    this.UOMList = this.UOMList.filter((UOM) => {
+      return UOM.stock <= 10;
+    });
   }
 }
