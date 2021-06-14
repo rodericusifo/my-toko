@@ -16,6 +16,7 @@ export class ProductListComponent implements OnInit {
     image: File;
   }>;
   editProductForm!: FormGroup;
+  search: any;
 
   constructor(private fb: FormBuilder) {
     this.editProduct = new EventEmitter<{

@@ -1,0 +1,93 @@
+<div class="container mt-3" *ngIf="isLoaded">
+    <div class="card Card m-auto">
+        <h2 class="m-auto">Order Receipt</h2>
+        <div
+        class="d-flex justify-content-center"
+        >
+        <!-- <button
+            class="btn btn-success"
+        >
+            Print
+        </button> -->
+        </div>
+        <div class="row mt-5 ml-1">
+            <div class="col-12 col-sm-4 ">
+                <h3>Order Number</h3>
+            </div>
+            <div class="col-12 col-sm-8">
+                <p>{{ order.orderNumber }}</p>
+            </div>
+        </div>
+        <div class="row ml-1">
+            <div class="col-12 col-sm-4">
+                <h3>Order Date</h3>
+            </div>
+            <div class="col-12 col-sm-8">
+                <p>{{ order.orderDate }}</p>
+            </div>
+        </div>
+        <div class="row ml-1">
+            <div class="col-12 col-sm-4">
+                <h3>Customer Name</h3>
+            </div>
+            <div class="col-12 col-sm-8">
+                <p>{{ order.customerName }}</p>
+            </div>
+        </div>
+        <div class="row ml-1">
+            <div class="col-12 col-sm-4">
+                <h3>Status</h3>
+            </div>
+            <div class="col-12 col-sm-8">
+                <p>{{ order.status }}</p>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table align-content-md-around">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" class="sort text-dark Th" data-sort="name">Name</th>
+                        <th scope="col" class="sort text-dark text-center Th" data-sort="quantity">
+                            Qty
+                        </th>
+                        <th scope="col" class="sort text-dark text-right Th" data-sort="price">
+                            Price
+                        </th>
+                        <th
+                            scope="col"
+                            class="sort text-dark Th text-right"
+                            data-sort="amount"
+                        >
+                            Amount
+                        </th>
+                    </tr>
+                </thead>
+                <tbody class="list">
+                    <tr *ngFor="let OrderProduct of order.OrderProducts">
+                        <td class="Td name">
+                            {{ OrderProduct.UOM.Product.name }} - {{ OrderProduct.UOM.name }}
+                        </td>
+                        <td class="Td quantity text-center">{{ OrderProduct.quantity }}</td>
+                        <td class="Td amount text-right">
+                            Rp. {{ OrderProduct.UOM.sellingPrice }}
+                        </td>
+                        <td class="Td amount text-right">Rp. {{ OrderProduct.amount }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <p class="col-12 col-sm-8 text-left text-right font-weight-bold">Subtotal</p>
+            <p class="col-12 col-sm-4 text-right ml--3">Rp. {{ order.subTotal }}</p>
+        </div>
+        <div class="row">
+            <p class="col-12 col-sm-8 text-left text-right font-weight-bold">Tax</p>
+            <p class="col-12 col-sm-4 text-right ml--3">{{ order.tax }}%</p>
+        </div>
+        <div class="row mb-5">
+            <p class="col-12 col-sm-8 text-left text-right font-weight-bold">Total</p>
+            <p class="col-12 col-sm-4 text-right ml--3">Rp. {{ order.total }}</p>
+        </div>
+    </div>
+</div>
+

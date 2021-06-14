@@ -1,4 +1,7 @@
 <div class="table-responsive mt-4">
+  <div class="form-group">
+    <input [(ngModel)]="search" class="form-control" placeholder="Search Product ID/Name" id="search"/>
+  </div>
   <table class="table align-items-center">
     <thead class="thead-dark">
       <tr>
@@ -16,7 +19,7 @@
       </tr>
     </thead>
     <tbody class="list">
-      <tr *ngFor="let product of products; let i = index">
+      <tr *ngFor="let product of products | filter:search; let i = index   " >
         <td class="no">
           {{ i + 1 }}
         </td>

@@ -9,7 +9,6 @@ import { UserComponent } from './admin-root/user/user.component';
 import { BrandComponent } from './admin-root/brand/brand.component';
 import { ProductComponent } from './admin-root/product/product.component';
 import { ProfitLossComponent } from './admin-root/profit-loss/profit-loss.component';
-import { ProductEffectivenessComponent } from './admin-root/product-effectiveness/product-effectiveness.component';
 import { PurchaseOrderComponent } from './admin-root/purchase-order/purchase-order.component';
 import { DeliveryOrderComponent } from './admin-root/delivery-order/delivery-order.component';
 import { InvoiceComponent } from './admin-root/invoice/invoice.component';
@@ -27,7 +26,7 @@ import { UomFormComponent } from './admin-root/uom/uom-form/uom-form.component';
 import { BrandFormComponent } from './admin-root/brand/brand-form/brand-form.component';
 import { BrandListComponent } from './admin-root/brand/brand-list/brand-list.component';
 import { UomListComponent } from './admin-root/uom/uom-list/uom-list.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PoFormComponent } from './admin-root/purchase-order/po-form/po-form.component';
 import { SupplierComponent } from './admin-root/supplier/supplier.component';
 import { SupplierFormComponent } from './admin-root/supplier/supplier-form/supplier-form.component';
@@ -43,6 +42,8 @@ import { OrderFormComponent } from './admin-root/order/order-form/order-form.com
 import { OrderListComponent } from './admin-root/order/order-list/order-list.component';
 import { OrderSheetComponent } from './admin-root/order-sheet/order-sheet.component';
 import { OrderSheetCardComponent } from './admin-root/order-sheet/order-sheet-card/order-sheet-card.component';
+import { OrderReceiptComponent } from './admin-root/order-receipt/order-receipt.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,6 @@ import { OrderSheetCardComponent } from './admin-root/order-sheet/order-sheet-ca
     BrandComponent,
     ProductComponent,
     ProfitLossComponent,
-    ProductEffectivenessComponent,
     PurchaseOrderComponent,
     DeliveryOrderComponent,
     InvoiceComponent,
@@ -85,12 +85,15 @@ import { OrderSheetCardComponent } from './admin-root/order-sheet/order-sheet-ca
     OrderListComponent,
     OrderSheetComponent,
     OrderSheetCardComponent,
+    OrderReceiptComponent,
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     SharedModule,
     ReactiveFormsModule,
+    Ng2SearchPipeModule,
+    FormsModule
   ],
 })
 export class AdminModule {}
