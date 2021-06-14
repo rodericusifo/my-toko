@@ -8,16 +8,20 @@
           >Order Number</label
         >
         <div class="input-group input-group col-12 col-sm-9">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >ORD</span
+            >
+          </div>
           <input
-              type="text"
-              class="form-control"
-              aria-label="Sizing example input"
-              aria-describedby="inputGroup-sizing-default"
-              pattern="^[0-9]+$"
-              formControlName="OrderNumber"
-              placeholder="Order Number"
-              required
-            />
+            type="text"
+            class="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default"
+            pattern="^[0-9]+$"
+            formControlName="OrderNumber"
+            required
+          />
         </div>
         <!-- <small
           *ngIf="
