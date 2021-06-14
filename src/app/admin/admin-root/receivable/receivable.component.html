@@ -1,6 +1,6 @@
 <div class="container mt-3">
-  <h2>Receivable</h2>
-  <div class="table-responsive mt-4">
+  <h2 *ngIf="isLoaded && !isError">Receivable</h2>
+  <div class="table-responsive mt-4" *ngIf="isLoaded && !isError">
     <table class="table align-items-center">
       <thead class="thead-dark">
         <tr>
@@ -13,31 +13,30 @@
           <th scope="col" class="sort text-white" data-sort="order-date">
             Order Date
           </th>
-          <th scope="col" class="sort text-white" data-sort="status">
-            Status
-          </th>
-          <th scope="col" class="sort text-white" data-sort="costumer">
-            Customer Name
-          </th>
+          <th scope="col" class="sort text-white" data-sort="status">Status</th>
           <th scope="col" class="sort text-white text-right" data-sort="total">
             Total
           </th>
         </tr>
       </thead>
       <tbody class="list">
-        <tr>
-          <td class="no">1</td>
-          <td class="order-number">00001</td>
-          <td class="order-date">13-06-2021</td>
-          <td class="status">-</td>
-          <td class="costumer">Hafidz R A</td>
-          <td class="total text-right">Rp.3.200.000</td>
+        <tr *ngFor="let AR of ARList; let i = index">
+          <td class="no">{{ i + 1 }}</td>
+          <td class="order-number">{{ AR.orderNumber }}</td>
+          <td class="order-date">{{ AR.orderDate }}</td>
+          <td class="status">{{ AR.status }}</td>
+          <td class="total text-right">Rp. {{ AR.total }}</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div class="row justify-content-end mr-1" >
+  <div class="row justify-content-end mr-1" *ngIf="isLoaded && !isError">
     <p class="col-2 text-right font-weight-bold">Grand Total</p>
-    <p class="col-2 text-right">Rp.3.200.000</p>
+    <p class="col-2 text-right">Rp. {{ grandTotal }}</p>
   </div>
+  <app-page-error
+    [errorMessage]="errorMessage"
+    *ngIf="isLoaded && isError"
+  ></app-page-error>
+  <app-page-admin-loader *ngIf="!isLoaded"></app-page-admin-loader>
 </div>

@@ -6,8 +6,6 @@ import { ISupplier } from './supplier-interface';
 import { IUOM } from './UOM-interface';
 import { IPO } from './PO-interface';
 import { IDO } from './DO-interface';
-import { IOrder } from './order-interface';
-import { IOrderProduct } from './order-product-interface';
 
 interface IData {
   Authorization?: string;
@@ -25,6 +23,7 @@ interface IData {
   Orders?: any;
   Order?: any;
   UOMActiveList?: any;
+  ARList?: any;
 }
 
 export { IData };
