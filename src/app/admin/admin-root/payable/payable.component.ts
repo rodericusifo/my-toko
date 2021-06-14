@@ -14,6 +14,7 @@ export class PayableComponent implements OnInit {
   isError!: boolean;
   errorMessage!: string;
   accountPayableListSubscription!: Subscription;
+  search: any;
 
   constructor(private accountPayableService: AccountPayableService) {
     this.isLoaded = true;
