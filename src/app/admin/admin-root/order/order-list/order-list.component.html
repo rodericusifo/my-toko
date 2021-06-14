@@ -1,38 +1,38 @@
 <div class="table-responsive mt-4">
-    <table class="table align-items-center">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col" class="sort text-white text-default" data-sort="no">
-            No
-          </th>
-          <th scope="col" class="sort text-white" data-sort="order-number">Order Number</th>
-          <th scope="col" class="sort text-white" data-sort="order-date">Order Date</th>
-          <th scope="col" class="sort text-white" data-sort="customer-name">Customer Name</th>
-          <th scope="col" class="sort text-white" data-sort="using-tax">Using Tax</th>
-        </tr>
-      </thead>
-      <tbody class="list">
-        <tr>
-          <td class="no">
-            1
-          </td>
-          <td class="order-number">
-            <a
-            [routerLink]="'/admin/order/:orderID'"
+  <table class="table align-items-center">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col" class="sort text-white text-default" data-sort="no">
+          No
+        </th>
+        <th scope="col" class="sort text-white" data-sort="order-number">
+          Order Number
+        </th>
+        <th scope="col" class="sort text-white" data-sort="order-date">
+          Order Date
+        </th>
+        <th scope="col" class="sort text-white" data-sort="customer-name">
+          Customer Name
+        </th>
+        <th scope="col" class="sort text-white" data-sort="status">Status</th>
+      </tr>
+    </thead>
+    <tbody class="list">
+      <tr *ngFor="let order of orders; let i = index">
+        <td class="no">
+          {{ i + 1 }}
+        </td>
+        <td class="order-number">
+          <a
+            [routerLink]="'/admin/order/' + order._id"
             routerLinkActive="active"
-            >OR001</a
+            >{{ order.orderNumber }}</a
           >
-          </td>
-          <td class="order-date">
-            11-06-2021
-          </td>
-          <td class="customer-name">
-            Rizka
-          </td>
-          <td class="using-tax">
-            Yes
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+        </td>
+        <td class="order-date">{{ order.orderDate }}</td>
+        <td class="customer-name">{{ order.customerName }}</td>
+        <td class="status">{{ order.status }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

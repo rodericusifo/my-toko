@@ -20,6 +20,9 @@ interface IData {
   DOList?: IDO[];
   Invoices?: any;
   APList?: any;
+  Orders?: any;
+  Order?: any;
+  UOMActiveList?: any;
 }
 
 export { IData };

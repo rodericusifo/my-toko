@@ -1,9 +1,4 @@
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-  HttpResponse,
-} from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -12,18 +7,19 @@ import { IResponse } from '../interfaces/response-interface';
 import { AuthInfoService } from './auth-info.service';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class UOMService {
+export class OrderService {
+
   constructor(
     private http: HttpClient,
     private authInfoService: AuthInfoService
-  ) {}
+  ) { }
 
-  public getUOMList(): Observable<HttpResponse<IResponse>> {
+  public getOrderList(): Observable<HttpResponse<IResponse>> {
     return this.http
       .get<IResponse>(
-        `${environment.API_URL}UOM/list?userID=${
+        `${environment.API_URL}orders/list?userID=${
           this.authInfoService.getDecodedToken().id
         }`,
         {
@@ -37,35 +33,18 @@ export class UOMService {
       .pipe(catchError(this.handlingError));
   }
 
-  public getUOMActiveList(): Observable<HttpResponse<IResponse>> {
-    return this.http
-      .get<IResponse>(
-        `${environment.API_URL}UOM/list-active?userID=${
-          this.authInfoService.getDecodedToken().id
-        }`,
-        {
-          headers: new HttpHeaders({
-            Authorization: this.authInfoService.getAuth()!,
-          }),
-          responseType: 'json',
-          observe: 'response',
-        }
-      )
-      .pipe(catchError(this.handlingError));
-  }
-
-  public createUOM(UOM: {
-    name: string;
-    purchasePrice: number;
-    sellingPrice: number;
-    Product: string;
+  public createOrder(order: {
+    orderNumber: string;
+    orderDate: string;
+    customerName: string;
+    isTaxed: string;
   }): Observable<HttpResponse<IResponse>> {
     return this.http
       .post<IResponse>(
-        `${environment.API_URL}UOM/create?userID=${
+        `${environment.API_URL}orders/create?userID=${
           this.authInfoService.getDecodedToken().id
         }`,
-        UOM,
+        order,
         {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
@@ -77,16 +56,57 @@ export class UOMService {
       .pipe(catchError(this.handlingError));
   }
 
-  public editUOMStatus(
-    UOMID: string,
-    status: string
+  public getOrderIDDetail(orderID: string): Observable<HttpResponse<IResponse>> {
+    return this.http
+      .get<IResponse>(
+        `${environment.API_URL}orders/${orderID}/detail?userID=${
+          this.authInfoService.getDecodedToken().id
+        }`,
+        {
+          headers: new HttpHeaders({
+            Authorization: this.authInfoService.getAuth()!,
+          }),
+          responseType: 'json',
+          observe: 'response',
+        }
+      )
+      .pipe(catchError(this.handlingError));
+  }
+
+  public addOrderIDProduct(
+    orderID: string,
+    orderProduct: { quantity: number; UOM: string }
+  ): Observable<HttpResponse<IResponse>> {
+    return this.http
+      .post<IResponse>(
+        `${environment.API_URL}orders/${orderID}/add-product?userID=${
+          this.authInfoService.getDecodedToken().id
+        }`,
+        orderProduct,
+        {
+          headers: new HttpHeaders({
+            'Content-Type': 'application/json',
+            Authorization: this.authInfoService.getAuth()!,
+          }),
+          observe: 'response',
+        }
+      )
+      .pipe(catchError(this.handlingError));
+  }
+
+  public editOrderIDStatus(
+    orderID: string,
+    status: string,
+    body?: {
+      canceledReason: string
+    }
   ): Observable<HttpResponse<IResponse>> {
     return this.http
       .put<IResponse>(
-        `${environment.API_URL}UOM/${UOMID}/edit-status?userID=${
+        `${environment.API_URL}orders/${orderID}/edit-status?userID=${
           this.authInfoService.getDecodedToken().id
         }&&status=${status}`,
-        {},
+        body,
         {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',
