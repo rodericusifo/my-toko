@@ -37,6 +37,23 @@ export class UOMService {
       .pipe(catchError(this.handlingError));
   }
 
+  public getUOMActiveList(): Observable<HttpResponse<IResponse>> {
+    return this.http
+      .get<IResponse>(
+        `${environment.API_URL}UOM/list-active?userID=${
+          this.authInfoService.getDecodedToken().id
+        }`,
+        {
+          headers: new HttpHeaders({
+            Authorization: this.authInfoService.getAuth()!,
+          }),
+          responseType: 'json',
+          observe: 'response',
+        }
+      )
+      .pipe(catchError(this.handlingError));
+  }
+
   public createUOM(UOM: {
     name: string;
     purchasePrice: number;

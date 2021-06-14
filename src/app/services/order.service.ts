@@ -37,7 +37,7 @@ export class OrderService {
     orderNumber: string;
     orderDate: string;
     customerName: string;
-    isTaxed: boolean;
+    isTaxed: string;
   }): Observable<HttpResponse<IResponse>> {
     return this.http
       .post<IResponse>(
@@ -94,17 +94,20 @@ export class OrderService {
       .pipe(catchError(this.handlingError));
   }
 
-  public editOrderStatus(
+
+  public editOrderIDStatus(
     orderID: string,
     status: string,
-    canceledReason: string,
+    body?: {
+      canceledReason: string
+    }
   ): Observable<HttpResponse<IResponse>> {
     return this.http
       .put<IResponse>(
         `${environment.API_URL}orders/${orderID}/edit-status?userID=${
           this.authInfoService.getDecodedToken().id
-        }&&status=${status}&&canceledReason=${canceledReason}`,
-        {},
+        }&&status=${status}`,
+        body,
         {
           headers: new HttpHeaders({
             'Content-Type': 'application/json',

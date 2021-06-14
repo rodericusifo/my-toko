@@ -30,7 +30,7 @@ export class PayableComponent implements OnInit {
     this.accountPayableListSubscription = this.accountPayableService
       .getAccountPayableList()
       .subscribe(
-        (response) => {
+        (response: any) => {
           console.log(response);
           this.APList = response.body!.data!.APList!.map((AP: any) => {
             return {
@@ -51,7 +51,7 @@ export class PayableComponent implements OnInit {
           this.accountPayableListSubscription.unsubscribe();
           this.isLoaded = true;
         },
-        (err) => {
+        (err: any) => {
           console.log(err);
           this.isError = true;
           this.accountPayableListSubscription.unsubscribe();

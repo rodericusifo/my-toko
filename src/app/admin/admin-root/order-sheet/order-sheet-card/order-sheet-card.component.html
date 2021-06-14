@@ -1,11 +1,22 @@
 <div class="card Card">
-    <img class="card-img-top" src="../../assets/img/theme/img-1-1000x600.jpg" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Indomie</h5>
-      <div class="row justify-content-lg-center">
-        <a href="#" class="btn btn-sm btn-primary">Add to cart</a>
-        <input type="number" value="1" class="Quantity">
-      </div>
+  <img
+    class="card-img-top"
+    [src]="UOMActive.Product.image"
+    [alt]="UOMActive.Product.name + 'image'"
+  />
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ UOMActive.Product.name }} - {{ UOMActive.name }}
+    </h5>
+    <p>Stock: {{ UOMActive.stock }}</p>
+    <div class="row justify-content-lg-center">
+      <button
+        class="btn btn-sm btn-primary"
+        (click)="emitUOM(UOMActive._id, UOMquantity.value)"
+      >
+        Add to cart
+      </button>
+      <input type="number" min="1" value="1" class="Quantity" #UOMquantity />
     </div>
+  </div>
 </div>
-
