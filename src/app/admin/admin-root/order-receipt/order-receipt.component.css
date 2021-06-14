@@ -1,0 +1,11 @@
+.Th {
+    font-size: 15px !important;
+}
+
+.Td {
+    font-size: 18px !important;
+}
+
+.Card {
+    width: 500px;
+}
