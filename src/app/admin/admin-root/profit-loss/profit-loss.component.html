@@ -1,1 +1,44 @@
-<p>profit-loss works!</p>
+<div class="container mt-3">
+  <h2 *ngIf="isLoaded && !isError">E-Statement</h2>
+  <div class="table-responsive mt-4" *ngIf="isLoaded && !isError">
+    <table class="table align-items-center">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col" class="sort text-white text-default" data-sort="no">
+            No
+          </th>
+          <th scope="col" class="sort text-white" data-sort="number">Number</th>
+          <th scope="col" class="sort text-white" data-sort="date">Date</th>
+          <th scope="col" class="sort text-white text-right" data-sort="total">
+            Total
+          </th>
+        </tr>
+      </thead>
+      <tbody class="list">
+        <tr *ngFor="let EStatement of EStatementList; let i = index">
+          <td class="no">{{ i + 1 }}</td>
+          <td class="number">{{ EStatement.number }}</td>
+          <td class="date">{{ EStatement.date }}</td>
+          <td class="total text-right">Rp. {{ EStatement.total }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row justify-content-end mr-1" *ngIf="isLoaded && !isError">
+    <p class="col-2 text-right font-weight-bold">Incomes Total</p>
+    <p class="col-2 text-right">Rp. {{ incomesTotal }}</p>
+  </div>
+  <div class="row justify-content-end mr-1" *ngIf="isLoaded && !isError">
+    <p class="col-2 text-right font-weight-bold">Expenses Total</p>
+    <p class="col-2 text-right">Rp. {{ expensesTotal }}</p>
+  </div>
+  <div class="row justify-content-end mr-1" *ngIf="isLoaded && !isError">
+    <p class="col-2 text-right font-weight-bold">Profit/Loss</p>
+    <p class="col-2 text-right">Rp. {{ profitLoss }}</p>
+  </div>
+  <app-page-error
+    [errorMessage]="errorMessage"
+    *ngIf="isLoaded && isError"
+  ></app-page-error>
+  <app-page-admin-loader *ngIf="!isLoaded"></app-page-admin-loader>
+</div>

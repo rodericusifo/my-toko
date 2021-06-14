@@ -24,6 +24,8 @@ interface IData {
   Order?: any;
   UOMActiveList?: any;
   ARList?: any;
+  Incomes?: any;
+  Expenses?: any;
 }
 
 export { IData };

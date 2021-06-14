@@ -5,6 +5,11 @@
     [products]="products"
     *ngIf="isLoaded"
   ></app-uom-form>
+  <div class="mb-3">
+    <button class="btn btn-success" (click)="runOutStock()">
+      Run Out Stock
+    </button>
+  </div>
   <app-uom-list
     (editUOMStatus)="editUOMStatus($event)"
     [UOMList]="UOMList"
