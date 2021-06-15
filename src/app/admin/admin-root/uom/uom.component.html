@@ -5,7 +5,7 @@
     [products]="products"
     *ngIf="isLoaded"
   ></app-uom-form>
-  <div class="mb-3">
+  <div class="mb-3" *ngIf="isLoaded && !isError">
     <button class="btn btn-success" (click)="runOutStock()">
       Run Out Stock
     </button>
