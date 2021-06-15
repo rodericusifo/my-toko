@@ -1,7 +1,12 @@
 <div class="container mt-3">
   <h2 *ngIf="isLoaded && !isError">Receivable</h2>
+  <div class="float-left mb-3" *ngIf="isLoaded && !isError">
+    <button class="btn btn-success mt-3" (click)="exportexcel()">
+      Export to Excel
+    </button>
+  </div>
   <div class="table-responsive mt-4" *ngIf="isLoaded && !isError">
-    <table class="table align-items-center">
+    <table class="table align-items-center" id="receivable-table">
       <thead class="thead-dark">
         <tr>
           <th scope="col" class="sort text-white text-default" data-sort="no">

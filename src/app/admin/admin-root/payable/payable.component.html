@@ -1,9 +1,23 @@
 <div class="container mt-3">
   <h2 *ngIf="isLoaded && !isError">Payable</h2>
-  <div class="form-group">
-    <input [(ngModel)]="search" class="form-control mt-3" placeholder="Search by Supplier" id="search"/>
+  <div class="form-group float-left" *ngIf="isLoaded && !isError">
+    <input
+      [(ngModel)]="search"
+      class="form-control mt-3"
+      placeholder="Search by Supplier"
+      id="search"
+    />
   </div>
-  <div class="table-responsive mt-4" *ngIf="isLoaded && !isError">
+  <div class="float-right" *ngIf="isLoaded && !isError">
+    <button class="btn btn-success mt-3" (click)="exportexcel()">
+      Export to Excel
+    </button>
+  </div>
+  <div
+    class="table-responsive mt-4"
+    id="payable-table"
+    *ngIf="isLoaded && !isError"
+  >
     <table class="table align-items-center">
       <thead class="thead-dark">
         <tr>
@@ -26,7 +40,7 @@
         </tr>
       </thead>
       <tbody class="list">
-        <tr *ngFor="let AP of APList | filter:search; let i = index">
+        <tr *ngFor="let AP of APList | filter: search; let i = index">
           <td class="no">{{ i + 1 }}</td>
           <td class="inv-number">
             {{ AP.INVNumber }}
