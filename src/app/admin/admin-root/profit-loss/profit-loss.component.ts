@@ -1,6 +1,7 @@
 import { EStatementService } from './../../../services/e-statement.service';
 import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-profit-loss',
@@ -81,5 +82,15 @@ export class ProfitLossComponent implements OnInit {
           this.isLoaded = true;
         }
       );
+  }
+
+  exportexcel(): void {
+    let element = document.getElementById('e-statement-table');
+    const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+    const wb: XLSX.WorkBook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+    XLSX.writeFile(wb, 'e-statement.xlsx');
   }
 }
