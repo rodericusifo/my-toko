@@ -44,6 +44,7 @@ import { OrderSheetComponent } from './admin-root/order-sheet/order-sheet.compon
 import { OrderSheetCardComponent } from './admin-root/order-sheet/order-sheet-card/order-sheet-card.component';
 import { OrderReceiptComponent } from './admin-root/order-receipt/order-receipt.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { NgxPrintModule } from 'ngx-print';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     SharedModule,
     ReactiveFormsModule,
     Ng2SearchPipeModule,
-    FormsModule
+    FormsModule,
+    NgxPrintModule
   ],
 })
 export class AdminModule {}
