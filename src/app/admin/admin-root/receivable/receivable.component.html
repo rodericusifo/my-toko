@@ -1,6 +1,14 @@
 <div class="container mt-3">
   <h2 *ngIf="isLoaded && !isError">Receivable</h2>
-  <div class="float-left mb-3" *ngIf="isLoaded && !isError">
+  <div class="form-group float-left" *ngIf="isLoaded && !isError">
+    <input
+      [(ngModel)]="search"
+      class="form-control mt-3"
+      placeholder="Search by Customer Name"
+      id="search"
+    />
+  </div>
+  <div class="float-right" *ngIf="isLoaded && !isError">
     <button class="btn btn-success mt-3" (click)="exportexcel()">
       Export to Excel
     </button>
@@ -19,6 +27,9 @@
             Order Date
           </th>
           <th scope="col" class="sort text-white" data-sort="status">Status</th>
+          <th scope="col" class="sort text-white" data-sort="customer-name">
+            Customer Name
+          </th>
           <th scope="col" class="sort text-white text-right" data-sort="total">
             Total
           </th>
@@ -29,6 +40,7 @@
           <td class="no">{{ i + 1 }}</td>
           <td class="order-number">{{ AR.orderNumber }}</td>
           <td class="order-date">{{ AR.orderDate }}</td>
+          <td class="customer-name">{{ AR.customerName }}</td>
           <td class="status">{{ AR.status }}</td>
           <td class="total text-right">Rp. {{ AR.total }}</td>
         </tr>

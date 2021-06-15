@@ -15,6 +15,7 @@ export class ReceivableComponent implements OnInit {
   isError!: boolean;
   errorMessage!: string;
   accountReceivableListSubscription!: Subscription;
+  search!: any;
 
   constructor(private accountReceivableService: AccountReceivableService) {
     this.isLoaded = true;
