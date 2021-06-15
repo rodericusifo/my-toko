@@ -1,14 +1,17 @@
 <div class="container mt-3" *ngIf="isLoaded">
-    <div class="card Card m-auto">
+    <button
+        class="btn btn-success"
+        ngxPrint
+        printSectionId="print-receipt"
+        [useExistingCss]="true"
+    >
+        Print
+    </button>
+    <div class="card Card m-auto" id="print-receipt">
         <h2 class="m-auto">Order Receipt</h2>
         <div
         class="d-flex justify-content-center"
         >
-        <!-- <button
-            class="btn btn-success"
-        >
-            Print
-        </button> -->
         </div>
         <div class="row mt-5 ml-1">
             <div class="col-12 col-sm-4 ">
