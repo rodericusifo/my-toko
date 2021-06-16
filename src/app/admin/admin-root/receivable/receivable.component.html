@@ -36,7 +36,7 @@
         </tr>
       </thead>
       <tbody class="list">
-        <tr *ngFor="let AR of ARList; let i = index">
+        <tr *ngFor="let AR of ARList | filter: search; let i = index">
           <td class="no">{{ i + 1 }}</td>
           <td class="order-number">{{ AR.orderNumber }}</td>
           <td class="order-date">{{ AR.orderDate }}</td>
