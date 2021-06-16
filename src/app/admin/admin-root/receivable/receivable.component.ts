@@ -42,6 +42,7 @@ export class ReceivableComponent implements OnInit {
                 .split('-')
                 .reverse()
                 .join('-'),
+              customerName: AR.customerName,
               status: AR.status,
               total: AR.total,
             };
