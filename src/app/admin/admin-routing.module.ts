@@ -1,3 +1,5 @@
+import { environment } from './../../environments/environment';
+import { AuthGuardRoleService } from './../services/auth-guard-role.service';
 import { PurchaseOrderSheetComponent } from './admin-root/purchase-order-sheet/purchase-order-sheet.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -26,24 +28,96 @@ const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
-      { path: 'user', component: UserComponent },
-      { path: 'brand', component: BrandComponent },
-      { path: 'product', component: ProductComponent },
-      { path: 'supplier', component: SupplierComponent },
-      { path: 'profit-loss', component: ProfitLossComponent },
-      { path: 'purchase-order', component: PurchaseOrderComponent },
+      {
+        path: 'user',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.O },
+        component: UserComponent,
+      },
+      {
+        path: 'profit-loss',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.O },
+        component: ProfitLossComponent,
+      },
+      {
+        path: 'brand',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OI },
+        component: BrandComponent,
+      },
+      {
+        path: 'product',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OI },
+        component: ProductComponent,
+      },
+      {
+        path: 'uom',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OI },
+        component: UomComponent,
+      },
+      {
+        path: 'supplier',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OI },
+        component: SupplierComponent,
+      },
+      {
+        path: 'purchase-order',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OI },
+        component: PurchaseOrderComponent,
+      },
       {
         path: 'purchase-order/:purchaseOrderID',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OI },
         component: PurchaseOrderSheetComponent,
       },
-      { path: 'delivery-order', component: DeliveryOrderComponent },
-      { path: 'invoice', component: InvoiceComponent },
-      { path: 'payable', component: PayableComponent },
-      { path: 'receivable', component: ReceivableComponent },
-      { path: 'order', component: OrderComponent },
-      { path: 'order/:orderID', component: OrderSheetComponent },
-      { path: 'order/:orderID/receipt', component: OrderReceiptComponent },
-      { path: 'uom', component: UomComponent },
+      {
+        path: 'delivery-order',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OI },
+        component: DeliveryOrderComponent,
+      },
+      {
+        path: 'invoice',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OF },
+        component: InvoiceComponent,
+      },
+      {
+        path: 'payable',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OF },
+        component: PayableComponent,
+      },
+      {
+        path: 'receivable',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OF },
+        component: ReceivableComponent,
+      },
+      {
+        path: 'order',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OC },
+        component: OrderComponent,
+      },
+      {
+        path: 'order/:orderID',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OC },
+        component: OrderSheetComponent,
+      },
+      {
+        path: 'order/:orderID/receipt',
+        canActivate: [AuthGuardRoleService],
+        data: { roles: environment.AUTH_ROLES.OC },
+        component: OrderReceiptComponent,
+      },
     ],
   },
 ];
