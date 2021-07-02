@@ -4,7 +4,13 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:8888/'
+  API_URL: 'http://localhost:8888/',
+  AUTH_ROLES: {
+    O: ['OWNER'],
+    OI: ['OWNER', 'INVENTORY'],
+    OF: ['OWNER', 'FINANCE'],
+    OC: ['OWNER', 'CASHIER'],
+  },
 };
 
 /*
